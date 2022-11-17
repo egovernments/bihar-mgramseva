@@ -159,6 +159,7 @@ public class WaterServiceImpl implements WaterService {
 		mDMSValidator.validateMasterForCreateRequest(waterConnectionRequest);
 		enrichmentService.enrichWaterConnection(waterConnectionRequest, reqType);
 		System.out.println("creating user");
+		mDMSValidator.validateUserName(waterConnectionRequest);
 		userService.createUser(waterConnectionRequest);
 		System.out.println("created user   " + config.getIsExternalWorkFlowEnabled());
 		// call work-flow
@@ -260,6 +261,7 @@ public class WaterServiceImpl implements WaterService {
 		enrichmentService.enrichUpdateWaterConnection(waterConnectionRequest);
 		actionValidator.validateUpdateRequest(waterConnectionRequest, businessService, previousApplicationStatus);
 		waterConnectionValidator.validateUpdate(waterConnectionRequest, searchResult, WCConstants.UPDATE_APPLICATION);
+		mDMSValidator.validateUserName(waterConnectionRequest);
 		userService.updateUser(waterConnectionRequest, searchResult);
 		// Call workflow
 //		wfIntegrator.callWorkFlow(waterConnectionRequest, property);
