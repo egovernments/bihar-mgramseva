@@ -236,13 +236,17 @@ class Languages {
   String? label;
   String? value;
   bool isSelected = false;
+  String? regEx;
+  bool enableRegEx = false;
 
-  Languages({this.label, this.value, this.isSelected = false});
+  Languages({this.label, this.value, this.isSelected = false, this.regEx, this.enableRegEx = false});
 
   Languages.fromJson(Map<String, dynamic> json) {
     label = json['label'];
     value = json['value'];
     isSelected = json['isSelected'] ?? false;
+    regEx = json['regEx'];
+    enableRegEx = json['enableRegEx'] ?? false;
   }
 
   Map<String, dynamic> toJson() {
@@ -250,6 +254,8 @@ class Languages {
     data['label'] = this.label;
     data['value'] = this.value;
     data['isSelected'] = this.isSelected;
+    data['regEx'] = this.regEx;
+    data['enableRegEx'] = this.enableRegEx;
     return data;
   }
 }
@@ -257,18 +263,25 @@ class Languages {
 class LocalizationModules {
   String? label;
   String? value;
+  String? regEx;
+  bool enableRegEx = false;
 
-  LocalizationModules({this.label, this.value});
+  LocalizationModules({this.label, this.value, this.regEx, this.enableRegEx = false});
 
   LocalizationModules.fromJson(Map<String, dynamic> json) {
     label = json['label'];
     value = json['value'];
+    regEx = json['regEx'];
+    enableRegEx = json['enableRegEx'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['label'] = this.label;
     data['value'] = this.value;
+    data['regEx'] = this.regEx;
+    data['enableRegEx'] = this.enableRegEx;
+
     return data;
   }
 }

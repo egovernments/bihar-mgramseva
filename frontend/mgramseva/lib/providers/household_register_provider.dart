@@ -392,7 +392,6 @@ class HouseholdRegisterProvider with ChangeNotifier {
             .pdfPreview();
     Navigator.pop(context);
   }
-
   bool removeOverLay(_overlayEntry) {
     try {
       if (_overlayEntry == null) return false;

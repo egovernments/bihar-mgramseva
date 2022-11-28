@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:mgramseva/utils/Constants/I18KeyConstants.dart';
 import 'package:mgramseva/utils/constants.dart';
+import 'package:mgramseva/utils/global_variables.dart';
 
 import 'Locilization/application_localizations.dart';
 import 'global_variables.dart';

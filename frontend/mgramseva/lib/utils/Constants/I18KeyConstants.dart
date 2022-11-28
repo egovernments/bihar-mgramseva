@@ -118,7 +118,6 @@ class Common {
 
   /// consumer(s) Found
   String get EXPENSES_FOUND => 'EXPENSES_FOUND';
-
   String get CONNECTION_ID => 'CONNECTION_ID'; //Connection ID
   String get CONSUMER_NAME => 'CONSUMER_NAME'; //Consumer Name
   String get TOTAL_DUE_AMOUNT => 'TOTAL_DUE_AMOUNT'; //Total Amount Due
@@ -300,7 +299,10 @@ class Expense {
   ///Expenditure Bill with id
   String get EXPENDITURE_BILL_ID => 'EXPENDITURE_BILL_ID';
 
-  ///Has been modified
+  String get DEFAULT_NAME => 'DEFAULT_NAME';
+
+
+      ///Has been modified
   String get HAS_BEEN_MODIFIED => 'HAS_BEEN_MODIFIED';
   String get ENTER_VALID_AMOUNT => 'ENTER_VALID_AMOUNT';
   String get BILL_DATE_CANNOT_BEFORE_PART_DATE => 'ENTER_VALID_AMOUNT';

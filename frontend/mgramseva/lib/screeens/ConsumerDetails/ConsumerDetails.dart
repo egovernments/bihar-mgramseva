@@ -34,6 +34,8 @@ import 'package:mgramseva/widgets/footer.dart';
 import 'package:mgramseva/widgets/help.dart';
 import 'package:provider/provider.dart';
 
+import '../../providers/language.dart';
+
 class ConsumerDetails extends StatefulWidget {
   final String? id;
   final WaterConnection? waterconnection;
@@ -135,6 +137,9 @@ class _ConsumerDetailsState extends State<ConsumerDetails> {
   }
 
   Widget buildconsumerView(Property property) {
+    var languageProvider = Provider.of<LanguageProvider>(
+        navigatorKey.currentContext!,
+        listen: false);
     return Column(
       children: [
         FormWrapper(
@@ -186,7 +191,7 @@ class _ConsumerDetailsState extends State<ConsumerDetails> {
                           SubLabelText(consumerProvider.isEdit
                               ? i18.consumer.CONSUMER_EDIT_DETAILS_SUB_LABEL
                               : i18.consumer.CONSUMER_DETAILS_SUB_LABEL),
-                          //Conniction ID displayed based in Edit Mode
+                          //Connection ID displayed based in Edit Mode
                           consumerProvider.isEdit
                               ? BuildTableText(
                                   i18.consumer.CONSUMER_CONNECTION_ID,
@@ -199,7 +204,9 @@ class _ConsumerDetailsState extends State<ConsumerDetails> {
                             property.owners!.first.consumerNameCtrl,
                             inputFormatter: [
                               FilteringTextInputFormatter.allow(
-                                  RegExp("[A-Za-z ]"))
+                                  RegExp(languageProvider.selectedLanguage!.enableRegEx
+                                      ? languageProvider.selectedLanguage!.regEx.toString().split('^').last
+                                      : "[A-Za-z ]"))
                             ],
                             isRequired: true,
                             contextkey:
@@ -227,7 +234,9 @@ class _ConsumerDetailsState extends State<ConsumerDetails> {
                             isRequired: true,
                             inputFormatter: [
                               FilteringTextInputFormatter.allow(
-                                  RegExp("[A-Za-z ]"))
+                                  RegExp(languageProvider.selectedLanguage!.enableRegEx
+                                      ? languageProvider.selectedLanguage!.regEx.toString().split('^').last
+                                      : "[A-Za-z ]"))
                             ],
                             contextkey:
                                 consumerProvider.consmerWalkthrougList[2].key,
@@ -265,6 +274,9 @@ class _ConsumerDetailsState extends State<ConsumerDetails> {
                               consumerProvider
                                   .waterconnection.OldConnectionCtrl,
                               isRequired: true,
+                                  inputFormatter: [
+                                    FilteringTextInputFormatter.allow(
+                                        RegExp("[a-zA-Z0-9-\/]"))],
                               contextkey:
                                   consumerProvider.consmerWalkthrougList[4].key,
                               key: Keys.createConsumer.CONSUMER_OLD_ID_KEY,
