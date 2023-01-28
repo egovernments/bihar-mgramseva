@@ -110,7 +110,7 @@ public class OnBoardService {
 							if (!StringUtils.isEmpty(tenantId)) {
 								tenantId = tenantId.split("\\.")[0];
 							} else {
-								throw new CustomException("ONBOARD_FILE_ERROR", "tenantId is empty in cell with row"+address.getRow()+" and column"+address.getColumn());
+								tenantId = "pb";
 							}
 							user.setTenantId(tenantId);
 						} else if (2 == address.getColumn()) {
