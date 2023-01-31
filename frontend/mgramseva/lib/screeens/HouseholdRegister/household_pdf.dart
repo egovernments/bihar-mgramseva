@@ -10,8 +10,8 @@ import 'package:mgramseva/utils/date_formats.dart';
 import 'package:mgramseva/utils/global_variables.dart';
 import 'package:mgramseva/utils/pdf.dart';
 import 'package:pdf/pdf.dart';
-import 'package:provider/provider.dart';
 import 'package:pdf/widgets.dart' as pw;
+import 'package:provider/provider.dart';
 
 class HouseholdPdfCreator {
   final List<String> headers;
@@ -30,8 +30,8 @@ class HouseholdPdfCreator {
     final ttf = await Provider.of<CommonProvider>(buildContext, listen: false)
         .getPdfFontFamily();
 
-    final mgramSevaLogo = await PdfUtils.mgramSevaLogo;
-    final digitLogo = await PdfUtils.powerdByDigit;
+    // final mgramSevaLogo = await PdfUtils.mgramSevaLogo;
+    // final digitLogo = await PdfUtils.powerdByDigit;
     final date = DateFormats.getFilteredDate(
         DateTime.now().toLocal().toString(),
         dateFormat: "dd/MM/yyyy");
@@ -55,10 +55,10 @@ class HouseholdPdfCreator {
     pdf.addPage(pw.MultiPage(
         maxPages: Constants.MAX_PDF_PAGES,
         pageFormat: PdfPageFormat.a4,
-        footer: (_) => PdfUtils.pdfFooter(digitLogo),
+        // footer: (_) => PdfUtils.pdfFooter(digitLogo),
         build: (pw.Context context) {
           return [
-            PdfUtils.buildAppBar(buildContext, mgramSevaLogo, icons, ttf),
+            PdfUtils.buildAppBar(buildContext, icons, ttf),
             pw.Container(
               padding:
                   pw.EdgeInsets.only(top: 16, bottom: 16, right: 16, left: 16),

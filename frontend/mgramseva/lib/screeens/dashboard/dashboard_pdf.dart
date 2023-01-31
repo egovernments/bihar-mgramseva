@@ -12,9 +12,8 @@ import 'package:mgramseva/utils/global_variables.dart';
 import 'package:mgramseva/utils/models.dart';
 import 'package:mgramseva/utils/pdf.dart';
 import 'package:pdf/pdf.dart';
-import 'package:provider/provider.dart';
 import 'package:pdf/widgets.dart' as pw;
-import 'package:universal_html/html.dart' as html;
+import 'package:provider/provider.dart';
 
 class DashboardPdfCreator {
   final List<String> headers;
@@ -35,8 +34,8 @@ class DashboardPdfCreator {
     final ttf = await Provider.of<CommonProvider>(buildContext, listen: false)
         .getPdfFontFamily();
 
-    final mgramSevaLogo = await PdfUtils.mgramSevaLogo;
-    final digitLogo = await PdfUtils.powerdByDigit;
+    // final mgramSevaLogo = await PdfUtils.mgramSevaLogo;
+    // final digitLogo = await PdfUtils.powerdByDigit;
 
     var icons =
         pw.Font.ttf(await rootBundle.load('assets/icons/fonts/PdfIcons.ttf'));
@@ -71,10 +70,10 @@ class DashboardPdfCreator {
         maxPages: Constants.MAX_PDF_PAGES,
         pageFormat: PdfPageFormat.a4,
         margin: pw.EdgeInsets.symmetric(horizontal: 16, vertical: 25),
-        footer: (_) => PdfUtils.pdfFooter(digitLogo),
+        // footer: (_) => PdfUtils.pdfFooter(digitLogo),
         build: (pw.Context context) {
           return [
-            PdfUtils.buildAppBar(buildContext, mgramSevaLogo, icons, ttf),
+            PdfUtils.buildAppBar(buildContext, icons, ttf),
             _buildDashboardView(buildContext, feedBack, icons, ttf),
             _buildGridView(gridList, buildContext, ttf),
             pw.Container(
