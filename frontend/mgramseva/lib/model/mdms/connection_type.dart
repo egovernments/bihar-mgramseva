@@ -23,7 +23,7 @@ class ConnectionType {
   @JsonKey(name: "code")
   String? code;
 
-  @JsonKey(name: "isActive")
+  @JsonKey(name: "active")
   bool? isActive;
 
   ConnectionType();

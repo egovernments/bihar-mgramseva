@@ -22,12 +22,12 @@ ConnectionType _$ConnectionTypeFromJson(Map<String, dynamic> json) {
   return ConnectionType()
     ..name = json['name'] as String?
     ..code = json['code'] as String?
-    ..isActive = json['isActive'] as bool?;
+    ..isActive = json['active'] as bool?;
 }
 
 Map<String, dynamic> _$ConnectionTypeToJson(ConnectionType instance) =>
     <String, dynamic>{
       'name': instance.name,
       'code': instance.code,
-      'isActive': instance.isActive,
+      'active': instance.isActive,
     };
