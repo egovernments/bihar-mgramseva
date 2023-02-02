@@ -52,8 +52,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
       } else if (result != null &&
           result.length > 1 &&
           commonProvider.userDetails!.selectedtenant == null) {
-        WidgetsBinding.instance
-            .addPostFrameCallback((_) => showdialog(result));
+        WidgetsBinding.instance.addPostFrameCallback((_) => showdialog(result));
       }
     } else {
       tenantProvider.getTenants().then((value) {
@@ -107,8 +106,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 width: MediaQuery.of(context).size.width > 720
                     ? MediaQuery.of(context).size.width / 3
                     : MediaQuery.of(context).size.width,
-                height: res.length * 50 < 300 ?
-                res.length * 50 : 300,
+                height: res.length * 50 < 300 ? res.length * 50 : 300,
                 color: Colors.white,
                 child: ListView(
                   padding: EdgeInsets.zero,
@@ -143,6 +141,9 @@ class _CustomAppBarState extends State<CustomAppBar> {
                                         color: commonProvider.userDetails!
                                                         .selectedtenant !=
                                                     null &&
+                                                commonProvider.userDetails!
+                                                        .selectedtenant!.code ==
+                                                    result[index].code &&
                                                 commonProvider
                                                         .userDetails!
                                                         .selectedtenant!
@@ -159,6 +160,11 @@ class _CustomAppBarState extends State<CustomAppBar> {
                                           color: commonProvider.userDetails!
                                                           .selectedtenant !=
                                                       null &&
+                                                  commonProvider
+                                                          .userDetails!
+                                                          .selectedtenant!
+                                                          .code ==
+                                                      result[index].code &&
                                                   commonProvider
                                                           .userDetails!
                                                           .selectedtenant!
