@@ -37,10 +37,10 @@ public class DemandMigration {
 			+ " d.lastmodifiedby as dlastmodifiedby,d.lastmodifiedtime as dlastmodifiedtime,d.tenantid as dtenantid "
 			+ " from egbs_demand d inner join egbs_demanddetail dl ON d.id=dl.demandid AND d.tenantid=dl.tenantid "
 			+ " LEFT OUTER JOIN eg_user U ON U.id::CHARACTER VARYING=d.owner"
-			+ " WHERE d.businessservice IN ('TL','PT') AND d.tenantid ilike 'pb%' "
+			+ " WHERE d.businessservice IN ('TL','PT') AND d.tenantid ilike 'br%' "
 			+ " AND d.id IN (select id from egbs_demand order by id offset ? limit ?);";
 	
-	public static final String COUNT_QUERY = "select count(*) from egbs_demand where businessservice IN ('TL','PT') AND tenantid ilike 'pb%';";
+	public static final String COUNT_QUERY = "select count(*) from egbs_demand where businessservice IN ('TL','PT') AND tenantid ilike 'br%';";
 	
 	private Comparator<DemandDetail> demandDetailOrdercomparator;
 
