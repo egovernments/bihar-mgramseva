@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mgramseva/model/localization/language.dart';
@@ -35,8 +36,8 @@ class LanguageProvider with ChangeNotifier {
         stateInfos.add(new StateInfo.fromJson(res.toJson()));
         streamController.add(stateInfos);
       } else {
-        var localizationList =
-            await CoreRepository().getMdms(initRequestBody({"tenantId": "pb"}));
+        var localizationList = await CoreRepository()
+            .getMdms(initRequestBody({"tenantId": Constants.APP_TENANT_ID}));
         stateInfo = localizationList.mdmsRes?.commonMasters?.stateInfo?.first;
         if (stateInfo != null) {
           stateInfo?.languages?.first.isSelected = true;
