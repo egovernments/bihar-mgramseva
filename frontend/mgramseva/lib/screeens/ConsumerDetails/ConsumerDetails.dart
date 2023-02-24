@@ -203,9 +203,12 @@ class _ConsumerDetailsState extends State<ConsumerDetails> {
                             i18.consumer.CONSUMER_NAME,
                             property.owners!.first.consumerNameCtrl,
                             inputFormatter: [
-                              FilteringTextInputFormatter.allow(
-                                  RegExp(languageProvider.selectedLanguage!.enableRegEx
-                                      ? languageProvider.selectedLanguage!.regEx.toString().split('^').last
+                              FilteringTextInputFormatter.allow(RegExp(
+                                  languageProvider.selectedLanguage!.enableRegEx
+                                      ? languageProvider.selectedLanguage!.regEx
+                                          .toString()
+                                          .split('^')
+                                          .last
                                       : "[A-Za-z ]"))
                             ],
                             isRequired: true,
@@ -233,9 +236,12 @@ class _ConsumerDetailsState extends State<ConsumerDetails> {
                             property.owners!.first.fatherOrSpouseCtrl,
                             isRequired: true,
                             inputFormatter: [
-                              FilteringTextInputFormatter.allow(
-                                  RegExp(languageProvider.selectedLanguage!.enableRegEx
-                                      ? languageProvider.selectedLanguage!.regEx.toString().split('^').last
+                              FilteringTextInputFormatter.allow(RegExp(
+                                  languageProvider.selectedLanguage!.enableRegEx
+                                      ? languageProvider.selectedLanguage!.regEx
+                                          .toString()
+                                          .split('^')
+                                          .last
                                       : "[A-Za-z ]"))
                             ],
                             contextkey:
@@ -274,9 +280,6 @@ class _ConsumerDetailsState extends State<ConsumerDetails> {
                               consumerProvider
                                   .waterconnection.OldConnectionCtrl,
                               isRequired: true,
-                                  inputFormatter: [
-                                    FilteringTextInputFormatter.allow(
-                                        RegExp("[a-zA-Z0-9-\/]"))],
                               contextkey:
                                   consumerProvider.consmerWalkthrougList[4].key,
                               key: Keys.createConsumer.CONSUMER_OLD_ID_KEY,
