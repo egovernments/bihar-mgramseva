@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:typed_data';
 
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -319,8 +317,8 @@ class CommonProvider with ChangeNotifier {
 
   Future<void> getAppVersionDetails() async {
     try {
-      var localizationList =
-          await CoreRepository().getMdms(initRequestBody({"tenantId": "pb"}));
+      var localizationList = await CoreRepository()
+          .getMdms(initRequestBody({"tenantId": Constants.APP_TENANT_ID}));
       appVersion = localizationList.mdmsRes!.commonMasters!.appVersion!.first;
     } catch (e) {
       print(e.toString());
@@ -578,7 +576,7 @@ class CommonProvider with ChangeNotifier {
   // }
 
   static String getAdvanceAdjustedAmount(List<Demands> demandList) {
-    var amount = '0.0';
+    var amount = '0';
     var index = -1;
 
     if (demandList.isEmpty) return amount;
@@ -623,8 +621,8 @@ class CommonProvider with ChangeNotifier {
                       double.parse("${demandDetail.collectionAmount?.abs()}")
                   ? filteredDemands.first.demandDetails?.last.collectionAmount
                           ?.toString() ??
-                      '0.0'
-                  : '0.0';
+                      '0'
+                  : '0';
             }
           }
         }
@@ -909,15 +907,14 @@ class CommonProvider with ChangeNotifier {
             .abs();
   }
 
-  static Future<PaymentType> getMdmsBillingService() async {
+  static Future<PaymentType> getMdmsBillingService(String tenantId) async {
     try {
       var commonProvider = Provider.of<CommonProvider>(
           navigatorKey.currentContext!,
           listen: false);
 
-      return await CoreRepository().getPaymentTypeMDMS(getMdmsPaymentModes(
-          commonProvider.userDetails!.selectedtenant?.code.toString() ??
-              commonProvider.userDetails!.userRequest!.tenantId.toString()));
+      return await CoreRepository()
+          .getPaymentTypeMDMS(getMdmsPaymentModes(tenantId));
     } catch (e) {
       return PaymentType();
     }

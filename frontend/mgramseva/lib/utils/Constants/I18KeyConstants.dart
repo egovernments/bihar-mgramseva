@@ -118,7 +118,6 @@ class Common {
 
   /// consumer(s) Found
   String get EXPENSES_FOUND => 'EXPENSES_FOUND';
-
   String get CONNECTION_ID => 'CONNECTION_ID'; //Connection ID
   String get CONSUMER_NAME => 'CONSUMER_NAME'; //Consumer Name
   String get TOTAL_DUE_AMOUNT => 'TOTAL_DUE_AMOUNT'; //Total Amount Due
@@ -300,7 +299,10 @@ class Expense {
   ///Expenditure Bill with id
   String get EXPENDITURE_BILL_ID => 'EXPENDITURE_BILL_ID';
 
-  ///Has been modified
+  String get DEFAULT_NAME => 'DEFAULT_NAME';
+
+
+      ///Has been modified
   String get HAS_BEEN_MODIFIED => 'HAS_BEEN_MODIFIED';
   String get ENTER_VALID_AMOUNT => 'ENTER_VALID_AMOUNT';
   String get BILL_DATE_CANNOT_BEFORE_PART_DATE => 'ENTER_VALID_AMOUNT';
@@ -507,6 +509,10 @@ class ConsumerReciepts {
   String get CONSUMER_RECEIPT_PRINT => 'CONSUMER_RECEIPT_PRINT';
   String get CONSUMER_ACTUAL_DUE_AMOUNT => 'CONSUMER_ACTUAL_DUE_AMOUNT';
   String get CONSUMER_PENDING_AMOUNT => 'CONSUMER_PENDING_AMOUNT';
+  String get CONNECT_TO_DEVICE => 'CONNECT_TO_DEVICE';
+  String get CLICK_TO_CONNECT => 'CLICK_TO_CONNECT';
+  String get CONNECTION_NOT_ESTABLISHED => 'CONNECTION_NOT_ESTABLISHED';
+  String get CLOSE => 'CLOSE';
 }
 
 class _NetWorkException {

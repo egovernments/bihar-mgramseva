@@ -5,15 +5,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
@@ -330,7 +322,9 @@ public class DemandGenerationConsumer {
 			 * + connectionNo ); continue; }
 			 */
 			try {
-				generateDemandInBatch(calculationReq, masterMap, billingCycle, isSendMessage);
+					if(!Objects.equals(tenantId, tenantId.substring(0,2)+".testing")) {
+						generateDemandInBatch(calculationReq, masterMap, billingCycle, isSendMessage);
+					}
 
 			} catch (Exception e) {
 				System.out.println("Got the exception while genating the demands:" + connectionNo);

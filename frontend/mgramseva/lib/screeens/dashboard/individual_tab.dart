@@ -82,10 +82,11 @@ class _IndividualTabState extends State<IndividualTab> {
                   : dashBoardProvider.collectionHeaderList,
               tableData: tableData,
               leftColumnWidth: width,
-              height: 58 + (52.0 * tableData.length) + extraHeight,
+              height: 58 + (52.0 * tableData.length + 1) + extraHeight,
               rightColumnWidth: expenseList is List<ExpensesDetailsModel>
                   ? width * 4
                   : width * 2,
+              scrollPhysics: NeverScrollableScrollPhysics(),
             );
     });
   }

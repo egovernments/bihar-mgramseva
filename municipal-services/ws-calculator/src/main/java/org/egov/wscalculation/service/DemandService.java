@@ -352,7 +352,7 @@ public class DemandService {
 	private void sendSMSNotification(RequestInfo requestInfo, List<SMSRequest> smsRequests, String billCycle,
 			String consumerCode, List<DemandDetail> demandDetails) {
 		UserDetailResponse userDetailResponse = userService.getUserByRoleCodes(requestInfo, Arrays.asList("GP_ADMIN"),
-				"pb");
+				requestInfo.getUserInfo().getTenantId().substring(0,2));
 		for (OwnerInfo ownerInfo : userDetailResponse.getUser()) {
 			String localizationMessage = util.getLocalizationMessages(ownerInfo.getTenantId(), requestInfo);
 			String messageString = util.getMessageTemplate(WSCalculationConstant.mGram_Consumer_NewBill,
@@ -1001,7 +1001,11 @@ public class DemandService {
 
 		LocalDate fromDate = LocalDate.parse(bulkDemand.getBillingPeriod().split("-")[0].trim(), formatter);
 		LocalDate toDate = LocalDate.parse(bulkDemand.getBillingPeriod().split("-")[1].trim(), formatter);
-		
+		if(fromDate.isAfter(LocalDate.now().minusMonths(1))) {
+			throw new CustomException("INVALID_BILLING_CYCLE",
+					"Cannot generate demands for future months");
+		}
+			
 		Long dayStartTime = LocalDateTime.of(fromDate.getYear(), fromDate.getMonth(), fromDate.getDayOfMonth(), 0, 0, 0)
 				.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
 		Long dayEndTime = LocalDateTime.of(toDate.getYear(), toDate.getMonth(), toDate.getDayOfMonth(), 23, 59, 59, 999000000)
