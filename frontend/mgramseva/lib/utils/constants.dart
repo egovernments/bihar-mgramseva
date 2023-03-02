@@ -9,7 +9,7 @@ class Constants {
   static const int PAGINATION_LIMIT = 75;
   static const int MAX_PDF_PAGES = 100;
   static const String HOME_NOTIFICATIONS_LIMIT = "50";
-  static const String APP_TENANT_ID = "bh";
+  static const String APP_TENANT_ID = "br";
 
   /// Package Name
   static const String PACKAGE_NAME = "com.dwss.mgramseva";
