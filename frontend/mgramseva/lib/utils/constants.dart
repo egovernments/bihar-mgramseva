@@ -15,9 +15,9 @@ class Constants {
   static const String PACKAGE_NAME = "com.dwss.mgramseva";
 
   static const String DIGIT_FOOTER_ENDPOINT =
-      'br-mgramseva-assets.s3.ap-south-1.amazonaws.com/digit-footer.png';
+      'https://br-mgramseva-assets.s3.ap-south-1.amazonaws.com/digit-footer.png';
   static const String DIGIT_FOOTER_WHITE_ENDPOINT =
-      'br-mgramseva-assets.s3.ap-south-1.amazonaws.com/digit-footer-bw.png';
+      'https://br-mgramseva-assets.s3.ap-south-1.amazonaws.com/digit-footer-bw.png';
   static const String LOGIN_KEY = 'login_key';
   static const String LANGUAGE_KEY = 'language_key';
   static const String STATES_KEY = 'states_key';
