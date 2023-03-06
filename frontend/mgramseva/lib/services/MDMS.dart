@@ -62,15 +62,15 @@ Map getConnectionTypePropertyTypeTaxPeriodMDMS(String tenantId, int datestamp) {
         {
           "moduleName": "ws-services-masters",
           "masterDetails": [
-            {"name": "connectionType"},
-            {"name": "Category"},
-            {"name": "SubCategory"},
+            {"name": "connectionType", "filter": "[?(@.active==true)]"},
+            {"name": "Category", "filter": "[?(@.active==true)]"},
+            {"name": "SubCategory", "filter": "[?(@.active==true)]"},
           ]
         },
         {
           "moduleName": "PropertyTax",
           "masterDetails": [
-            {"name": "PropertyType"},
+            {"name": "PropertyType", "filter": "[?(@.active==true)]"},
           ]
         },
         {
