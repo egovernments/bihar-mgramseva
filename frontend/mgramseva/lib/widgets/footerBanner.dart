@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mgramseva/Env/app_config.dart';
 import 'package:mgramseva/utils/constants.dart';
 
 class FooterBanner extends StatelessWidget {
@@ -12,7 +11,7 @@ class FooterBanner extends StatelessWidget {
         child: Image(
             width: 140,
             image: NetworkImage(
-              "$apiBaseUrl${Constants.DIGIT_FOOTER_WHITE_ENDPOINT}",
+              "${Constants.DIGIT_FOOTER_WHITE_ENDPOINT}",
             )),
       ),
     );
