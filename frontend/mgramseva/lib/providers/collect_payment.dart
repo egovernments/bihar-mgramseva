@@ -34,6 +34,7 @@ import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
 
 import '../components/HouseConnectionandBill/jsconnnector.dart' as js;
+import '../utils/common_methods.dart';
 import 'common_provider.dart';
 
 class CollectPaymentProvider with ChangeNotifier {
@@ -304,7 +305,7 @@ class CollectPaymentProvider with ChangeNotifier {
                           .translate(commonProvider
                               .userDetails!.selectedtenant!.code!)),
                   getprinterlabel(i18.consumerReciepts.RECEIPT_CONSUMER_NO,
-                      '${fetchBill.consumerCode}'),
+                      '${CommonMethods.getSplitStings(fetchBill.consumerCode!,16)}'),
                   getprinterlabel(
                     i18.consumerReciepts.RECEIPT_CONSUMER_NAME,
                     '${item.paidBy}',
