@@ -513,6 +513,7 @@ class ConsumerReciepts {
   String get CLICK_TO_CONNECT => 'CLICK_TO_CONNECT';
   String get CONNECTION_NOT_ESTABLISHED => 'CONNECTION_NOT_ESTABLISHED';
   String get CLOSE => 'CLOSE';
+  String get CONSUMER_RECIEPT_TITLE => 'CONSUMER_RECIEPT_TITLE';
 }
 
 class _NetWorkException {

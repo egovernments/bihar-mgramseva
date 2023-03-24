@@ -101,17 +101,17 @@ class ConsumerBillPaymentsState extends State<ConsumerBillPayments> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      kIsWeb
-                          ? SizedBox(
-                              width: 70,
-                              height: 70,
-                            )
-                          : Image(
-                              width: 40,
-                              height: 40,
-                              image: NetworkImage(stateProvider
-                                  .stateInfo!.stateLogoURL
-                                  .toString())),
+                      // kIsWeb
+                      //     ? SizedBox(
+                      //         width: 70,
+                      //         height: 70,
+                      //       )
+                      //     : Image(
+                      //         width: 40,
+                      //         height: 40,
+                      //         image: NetworkImage(stateProvider
+                      //             .stateInfo!.stateLogoURL
+                      //             .toString())),
                       Container(
                         width: kIsWeb ? 290 : 90,
                         margin: EdgeInsets.all(5),
@@ -119,7 +119,7 @@ class ConsumerBillPaymentsState extends State<ConsumerBillPayments> {
                           ApplicationLocalizations.of(
                                   navigatorKey.currentContext!)
                               .translate(i18.consumerReciepts
-                                  .GRAM_PANCHAYAT_WATER_SUPPLY_AND_SANITATION),
+                                  .CONSUMER_RECIEPT_TITLE),
                           textScaleFactor: kIsWeb ? 3 : 1,
                           maxLines: 3,
                           style: TextStyle(
@@ -151,6 +151,12 @@ class ConsumerBillPaymentsState extends State<ConsumerBillPayments> {
                             fontWeight: FontWeight.bold,
                           ))),
                   SizedBox(
+                    height: 4,
+                  ),
+                  getprinterlabel(
+                      i18.consumerReciepts.GRAM_PANCHAYAT_WATER_SUPPLY_AND_SANITATION,
+                      ""),
+                  SizedBox(
                     height: 8,
                   ),
                   getprinterlabel(
@@ -178,11 +184,11 @@ class ConsumerBillPaymentsState extends State<ConsumerBillPayments> {
                               .translate(widget.waterconnection!.additionalDetails!
                                   .street
                                   .toString()) +
-                          " " +
-                          ApplicationLocalizations.of(navigatorKey.currentContext!)
-                              .translate(widget
-                                  .waterconnection!.additionalDetails!.locality
-                                  .toString()) +
+                          // " " +
+                          // ApplicationLocalizations.of(navigatorKey.currentContext!)
+                          //     .translate(widget
+                          //         .waterconnection!.additionalDetails!.locality
+                          //         .toString()) +
                           " " +
                           ApplicationLocalizations.of(navigatorKey.currentContext!)
                               .translate(commonProvider
@@ -219,13 +225,13 @@ class ConsumerBillPaymentsState extends State<ConsumerBillPayments> {
                       ('₹' + (item.totalDue).toString())),
                   getprinterlabel(i18.consumerReciepts.RECEIPT_AMOUNT_PAID,
                       ('₹' + (item.totalAmountPaid).toString())),
-                  getprinterlabel(
-                      i18.consumerReciepts.RECEIPT_AMOUNT_IN_WORDS,
-                      ('Rupees ' +
-                          (NumberToWord()
-                              .convert('en-in', item.totalAmountPaid!.toInt())
-                              .toString()) +
-                          ' only')),
+                  // getprinterlabel(
+                  //     i18.consumerReciepts.RECEIPT_AMOUNT_IN_WORDS,
+                  //     ('Rupees ' +
+                  //         (NumberToWord()
+                  //             .convert('en-in', item.totalAmountPaid!.toInt())
+                  //             .toString()) +
+                  //         ' only')),
                   getprinterlabel(
                       i18.consumerReciepts.CONSUMER_PENDING_AMOUNT,
                       ('₹' +
