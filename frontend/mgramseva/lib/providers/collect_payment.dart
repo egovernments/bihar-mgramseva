@@ -238,25 +238,25 @@ class CollectPaymentProvider with ChangeNotifier {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      kIsWeb
-                          ? SizedBox(
-                              width: 70,
-                              height: 70,
-                            )
-                          : Image(
-                              width: 40,
-                              height: 40,
-                              image: NetworkImage(stateProvider
-                                  .stateInfo!.stateLogoURL
-                                  .toString())),
+                      // kIsWeb
+                      //     ? SizedBox(
+                      //         width: 70,
+                      //         height: 70,
+                      //       )
+                      //     : Image(
+                      //         width: 40,
+                      //         height: 40,
+                      //         image: NetworkImage(stateProvider
+                      //             .stateInfo!.stateLogoURL
+                      //             .toString())),
                       Container(
                         width: kIsWeb ? 290 : 90,
                         margin: EdgeInsets.all(5),
                         child: Text(
                           ApplicationLocalizations.of(
-                                  navigatorKey.currentContext!)
+                              navigatorKey.currentContext!)
                               .translate(i18.consumerReciepts
-                                  .GRAM_PANCHAYAT_WATER_SUPPLY_AND_SANITATION),
+                              .CONSUMER_RECIEPT_TITLE),
                           textScaleFactor: kIsWeb ? 3 : 1,
                           maxLines: 3,
                           style: TextStyle(
@@ -271,9 +271,10 @@ class CollectPaymentProvider with ChangeNotifier {
                     ],
                   ),
                   SizedBox(
-                    height: 8,
+                    height: 6,
                   ),
                   Container(
+                    alignment: Alignment.center,
                       width: kIsWeb ? 375 : 90,
                       margin: EdgeInsets.all(5),
                       child: Text(
@@ -281,12 +282,19 @@ class CollectPaymentProvider with ChangeNotifier {
                                   navigatorKey.currentContext!)
                               .translate(i18.consumerReciepts.WATER_RECEIPT),
                           textScaleFactor: kIsWeb ? 3 : 1,
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Colors.blue,
                             fontSize: 10,
                             height: 1,
                             fontWeight: FontWeight.bold,
                           ))),
+                  SizedBox(
+                    height: 4,
+                  ),
+                  getprinterlabel(
+                      i18.consumerReciepts.GRAM_PANCHAYAT_WATER_SUPPLY_AND_SANITATION,
+                      ""),
                   SizedBox(
                     height: 8,
                   ),
@@ -315,11 +323,11 @@ class CollectPaymentProvider with ChangeNotifier {
                                   navigatorKey.currentContext!)
                               .translate(
                                   '${houseHoldProvider.waterConnection?.additionalDetails?.street.toString()}') +
-                          " " +
-                          ApplicationLocalizations.of(
-                                  navigatorKey.currentContext!)
-                              .translate(
-                                  '${houseHoldProvider.waterConnection?.additionalDetails?.locality.toString()}') +
+                          // " " +
+                          // ApplicationLocalizations.of(
+                          //         navigatorKey.currentContext!)
+                          //     .translate(
+                          //         '${houseHoldProvider.waterConnection?.additionalDetails?.locality.toString()}') +
                           " " +
                           ApplicationLocalizations.of(
                                   navigatorKey.currentContext!)
@@ -357,13 +365,13 @@ class CollectPaymentProvider with ChangeNotifier {
                       ('₹' + (item.totalDue).toString())),
                   getprinterlabel(i18.consumerReciepts.RECEIPT_AMOUNT_PAID,
                       ('₹' + (item.totalAmountPaid).toString())),
-                  getprinterlabel(
-                      i18.consumerReciepts.RECEIPT_AMOUNT_IN_WORDS,
-                      ('Rupees ' +
-                          (NumberToWord()
-                              .convert('en-in', item.totalAmountPaid!.toInt())
-                              .toString()) +
-                          ' only')),
+                  // getprinterlabel(
+                  //     i18.consumerReciepts.RECEIPT_AMOUNT_IN_WORDS,
+                  //     ('Rupees ' +
+                  //         (NumberToWord()
+                  //             .convert('en-in', item.totalAmountPaid!.toInt())
+                  //             .toString()) +
+                  //         ' only')),
                   getprinterlabel(
                       i18.consumerReciepts.CONSUMER_PENDING_AMOUNT,
                       ('₹' +
