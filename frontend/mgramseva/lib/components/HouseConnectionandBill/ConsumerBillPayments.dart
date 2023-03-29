@@ -22,6 +22,7 @@ import 'package:number_to_words/number_to_words.dart';
 import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
 
+import '../../utils/common_methods.dart';
 import './jsconnnector.dart' as js;
 
 class ConsumerBillPayments extends StatefulWidget {
@@ -165,7 +166,7 @@ class ConsumerBillPaymentsState extends State<ConsumerBillPayments> {
                           .translate(commonProvider
                               .userDetails!.selectedtenant!.code!)),
                   getprinterlabel(i18.consumerReciepts.RECEIPT_CONSUMER_NO,
-                      widget.waterconnection!.connectionNo),
+                      CommonMethods.getSplitStings(widget.waterconnection!.connectionNo!,16)),
                   getprinterlabel(
                     i18.consumerReciepts.RECEIPT_CONSUMER_NAME,
                     widget.waterconnection!.connectionHolders!.first.name,

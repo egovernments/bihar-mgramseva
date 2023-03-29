@@ -223,4 +223,21 @@ class CommonMethods {
       return (fromDate.year + 1) != toDate.year;
     });
   }
+
+  static String getSplitStings(String data, int charCountLimit) {
+    final buffer = StringBuffer();
+    int i = 0;
+
+    while (i < data.length) {
+      buffer.write(data.substring(
+          i,
+          i + charCountLimit >= data.length
+              ? data.length
+              : i + charCountLimit));
+      buffer.write('\n');
+      i += charCountLimit;
+    }
+
+    return buffer.toString();
+  }
 }
