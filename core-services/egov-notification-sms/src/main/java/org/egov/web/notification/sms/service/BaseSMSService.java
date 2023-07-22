@@ -175,6 +175,17 @@ abstract public class BaseSMSService implements SMSService, SMSBodyBuilder {
     protected HttpHeaders getHttpHeaders() {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.valueOf(smsProperties.getContentType()));
+        for (String key : smsProperties.getAdditionalHeaders().keySet()) {
+            String value = smsProperties.getAdditionalHeaders().get(key);
+            switch (key) {
+                case "Authorization":
+                    switch(value){
+                        case "Basic": headers.set("Authorization",getBasicAuthenticationHeader(smsProperties.getUsername(),smsProperties.getPassword()));
+                    }
+                    break;
+                default: headers.set(key,value);
+            }
+        }
         return headers;
     }
 
@@ -199,6 +210,11 @@ abstract public class BaseSMSService implements SMSService, SMSBodyBuilder {
             requestFactory.setHttpClient(httpClient);
             restTemplate.setRequestFactory(requestFactory);
         }
+    }
+
+    private String getBasicAuthenticationHeader(String username, String password) {
+        String valueToEncode = username + ":" + password;
+        return "Basic " + Base64.getEncoder().encodeToString(valueToEncode.getBytes());
     }
 
 }
