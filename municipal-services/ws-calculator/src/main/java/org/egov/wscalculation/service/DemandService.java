@@ -317,7 +317,9 @@ public class DemandService {
 
 					SMSRequest sms = SMSRequest.builder().mobileNumber(owner.getMobileNumber()).message(messageString)
 							.category(Category.TRANSACTION).build();
-					producer.push(config.getSmsNotifTopic(), sms);
+					if(config.isSmsForBillDownloadEnabled()) {
+						producer.push(config.getSmsNotifTopic(), sms);
+					}
 
 				}
 			}
@@ -365,7 +367,9 @@ public class DemandService {
 				messageString = messageString.replace("{consumerno}", consumerCode);
 				SMSRequest sms = SMSRequest.builder().mobileNumber(ownerInfo.getMobileNumber()).message(messageString)
 						.category(Category.TRANSACTION).build();
-				producer.push(config.getSmsNotifTopic(), sms);
+				if(config.isSmsForBillDownloadEnabled()) {
+					producer.push(config.getSmsNotifTopic(), sms);
+				}
 			}
 		}
 	}
@@ -821,7 +825,9 @@ public class DemandService {
 
 				SMSRequest sms = SMSRequest.builder().mobileNumber(owner.getMobileNumber()).message(messageString)
 						.category(Category.TRANSACTION).build();
-				producer.push(config.getSmsNotifTopic(), sms);
+				if(config.isSmsForBillDownloadEnabled()) {
+					producer.push(config.getSmsNotifTopic(), sms);
+				}
 
 			}
 			 
