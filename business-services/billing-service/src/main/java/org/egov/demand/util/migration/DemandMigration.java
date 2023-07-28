@@ -117,11 +117,11 @@ public class DemandMigration {
 				+ " AND d.id IN (select id from egbs_demand order by id offset ? limit ?);");
 	}
 
-	public Map<String, String> migrateToV1(Integer startBatch, Integer batchSizeInput,String statelevelTenantId) {
+	public Map<String, String> migrateToV1(Integer startBatch, Integer batchSizeInput,String stateLevelTenantId) {
 		
 		Map<String, String> responseMap = new HashMap<>();
 		
-		int count = jdbcTemplate.queryForObject(getCountQuery(statelevelTenantId), Integer.class);
+		int count = jdbcTemplate.queryForObject(getCountQuery(stateLevelTenantId), Integer.class);
 		int i = 0;
 		if (null != startBatch && startBatch > 0)
 			i = startBatch;
