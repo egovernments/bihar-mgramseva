@@ -251,7 +251,7 @@ public class PaymentUpdateService {
 		}
 		if (config.getIsSMSEnabled() != null && config.getIsSMSEnabled()) {
 			List<SMSRequest> smsRequests = getSmsRequest(waterConnectionRequest, property, paymentDetail,WCConstants.PAYMENT_NOTIFICATION_SMS,paymentId);
-			smsRequests.addAll( getSmsRequest(waterConnectionRequest, property, paymentDetail,WCConstants.FEEDBACK_NOTIFICATION_SMS,paymentId));
+			// smsRequests.addAll( getSmsRequest(waterConnectionRequest, property, paymentDetail,WCConstants.FEEDBACK_NOTIFICATION_SMS,paymentId));
 			if (!CollectionUtils.isEmpty(smsRequests)) {
 				if(config.isSMSforPaymentNotificationEnabled()) {
 					notificationUtil.sendSMS(smsRequests);
