@@ -44,6 +44,9 @@ public class SMSProperties {
     @Value("#{${sms.extra.config.map}}")
     Map<String, String> extraConfigMap;
 
+    @Value("#{${sms.additionalheaders.map}}")
+    Map<String, String> additionalHeaders;
+
     @Value("#{${sms.category.map}}")
     Map<String, Map<String, String>> categoryMap;
 
