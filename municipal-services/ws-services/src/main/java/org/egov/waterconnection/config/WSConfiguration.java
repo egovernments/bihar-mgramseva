@@ -285,5 +285,23 @@ public class WSConfiguration {
 
     @Value("${egov.ws.fuzzy.searh.is.wildcard}")
     private Boolean isSearchWildcardBased;
+
+	@Value("${sms.pending.collection.enabled}")
+	private boolean isSMSForPendingCollectionEnabled;
+
+	@Value("${sms.todays.collection.enabled}")
+	private boolean isSMSForTodaysCollectionEnabled;
+
+	@Value("${sms.edit.water.connection.notification.enabled}")
+	private boolean isSMSForEditWaterConnectionEnabled;
+
+	@Value("${sms.payment.notification.enabled}")
+	private boolean isSMSforPaymentNotificationEnabled;
+
+	@Value("${sms.workflow.enabled}")
+	private boolean isSMSForWorkflowEnabled;
+
+	@Value("${sms.feedback.notification.enabled}")
+	private boolean isSMSForFeedbackNotificationEnabled;
     
 }
