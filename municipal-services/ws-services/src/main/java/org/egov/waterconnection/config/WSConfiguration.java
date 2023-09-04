@@ -306,5 +306,8 @@ public class WSConfiguration {
 
 	@Value("${sms.feedback.notification.enabled}")
 	private boolean isSMSForFeedbackNotificationEnabled;
+
+	@Value("${egov.url.shortner.allowLongUrl}")
+	private boolean isUrlShortnerEnabled;
     
 }

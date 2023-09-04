@@ -311,7 +311,7 @@ public class DemandService {
 					messageString = messageString.replace("{consumerno}", consumerCode);
 					messageString = messageString.replace("{billamount}", demandDetails.stream()
 							.map(DemandDetail::getTaxAmount).reduce(BigDecimal.ZERO, BigDecimal::add).toString());
-					messageString = messageString.replace("{BILL_LINK}", getShortenedUrl(actionLink));
+					messageString = messageString.replace("{BILL_LINK}",config.isUrlShortnerEnabled()? getShortenedUrl(actionLink):config.getUiAppHost());
 
 					System.out.println("Demand genaration Message1::" + messageString);
 
@@ -808,7 +808,7 @@ public class DemandService {
 			if (billNumber.size() > 0) {
 				actionLink = actionLink.replace("$billNumber", billNumber.get(0));
 			}
-			actionLink = getShortenedUrl(actionLink);
+			actionLink = config.isUrlShortnerEnabled()?getShortenedUrl(actionLink):config.getUiAppHost();
 			String messageString = localizationMessage.get(WSCalculationConstant.MSG_KEY);
 
 			System.out.println("Localization message::" + messageString + demand);
@@ -819,7 +819,7 @@ public class DemandService {
 				messageString = messageString.replace("{consumerno}", calculation.getConnectionNo());
 				messageString = messageString.replace("{billamount}", demandDetails.stream()
 						.map(DemandDetail::getTaxAmount).reduce(BigDecimal.ZERO, BigDecimal::add).toString());
-				messageString = messageString.replace("{BILL_LINK}", getShortenedUrl(actionLink));
+				messageString = messageString.replace("{BILL_LINK}",config.isUrlShortnerEnabled()? getShortenedUrl(actionLink):config.getUiAppHost());
 
 				System.out.println("Demand genaration Message2::" + messageString);
 

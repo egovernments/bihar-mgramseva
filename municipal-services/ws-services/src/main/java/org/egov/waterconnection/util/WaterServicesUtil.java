@@ -305,7 +305,8 @@ public class WaterServicesUtil {
 		JSONObject obj = new JSONObject();
 		obj.put(URL, actualURL);
 		String url = config.getNotificationUrl() + config.getShortenerURL();
-		
+		if(config.isUrlShortnerEnabled())
+          url=config.getWebUiPath();
 		Object response = serviceRequestRepository.getShorteningURL(new StringBuilder(url), obj);
 		return response.toString();
 	}

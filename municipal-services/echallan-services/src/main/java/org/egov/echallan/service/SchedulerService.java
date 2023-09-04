@@ -248,7 +248,7 @@ public class SchedulerService {
 							if (messageMap != null && !StringUtils.isEmpty(messageMap.get(NotificationUtil.MSG_KEY))) {
 								String message = messageMap.get(NotificationUtil.MSG_KEY);
 
-								message = message.replace("{NEW_EXP_LINK}", getShortenedUrl(addExpense));
+								message = message.replace("{NEW_EXP_LINK}",config.isUrlShortnerEnabled()?getShortenedUrl(addExpense):config.getUiAppHost());
 								message = message.replace("{GPWSC}",  (gpwscMap != null
 										&& !StringUtils.isEmpty(gpwscMap.get(NotificationUtil.MSG_KEY)))
 										? gpwscMap.get(NotificationUtil.MSG_KEY)
@@ -440,7 +440,7 @@ public class SchedulerService {
 						mobileNumberIdMap.entrySet().stream().forEach(map -> {
 							if (messageMap != null && !StringUtils.isEmpty(messageMap.get(NotificationUtil.MSG_KEY))) {
 								String message = messageMap.get(NotificationUtil.MSG_KEY);
-								message = message.replace("{EXP_MRK_LINK}", getShortenedUrl(addExpense));
+								message = message.replace("{EXP_MRK_LINK}",config.isUrlShortnerEnabled()?getShortenedUrl(addExpense):config.getUiAppHost());
 
 								message = message.replace("{GPWSC}", (gpwscMap != null
 										&& !StringUtils.isEmpty(gpwscMap.get(NotificationUtil.MSG_KEY)))
@@ -572,7 +572,7 @@ public class SchedulerService {
 								String uuidUsername = (String) map.getValue();
 								String message = formatMonthSummaryMessage(requestInfo, tenantId,
 										messageMap.get(NotificationUtil.MSG_KEY), new HashMap<>());
-								message = message.replace("{LINK}", getShortenedUrl(revenueLink));
+								message = message.replace("{LINK}", config.isUrlShortnerEnabled()?getShortenedUrl(revenueLink):config.getBillingHost());
 								message = message.replace("{GPWSC}", (gpwscMap != null
 										&& !StringUtils.isEmpty(gpwscMap.get(NotificationUtil.MSG_KEY)))
 										? gpwscMap.get(NotificationUtil.MSG_KEY)
