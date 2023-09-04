@@ -275,5 +275,8 @@ public class ChallanConfiguration {
     @Value("${sms.monthy.summary.enabled}")
     private boolean isSmsForMonthlySummaryEnabled;
 
+    @Value("${egov.url.shortner.allowLongUrl}")
+    private boolean isUrlShortnerEnabled;
+
 
 }

@@ -240,7 +240,8 @@ public class WSCalculationConfiguration {
 
 	@Value("${sms.bill.download.enabled}")
 	private boolean isSmsForBillDownloadEnabled;
-	
 
+	@Value("${egov.url.shortner.allowLongUrl}")
+	private boolean isUrlShortnerEnabled;
 	
 }
