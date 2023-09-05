@@ -405,7 +405,7 @@ class ConsumerProvider with ChangeNotifier {
 
       var res = await CoreRepository().getMdms(
           getConnectionTypePropertyTypeTaxPeriodMDMS(
-              commonProvider.userDetails!.userRequest!.tenantId.toString(),
+              commonProvider.userDetails!.selectedtenant!.code.toString(),
               (DateFormats.dateToTimeStamp(DateFormats.getFilteredDate(
                   dateTime.toLocal().toString())))));
       languageList = res;

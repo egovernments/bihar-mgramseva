@@ -41,7 +41,7 @@ public class DemandNotificationService {
 			List<SMSRequest> smsRequests = new LinkedList<>();
 			enrichSMSRequest(notificationObj, smsRequests, topic);
 			if (!CollectionUtils.isEmpty(smsRequests)) {
-				if(config.isSmsForDemandEnable()) {
+				if (config.isSmsForDemandEnable()) {
 					util.sendSMS(smsRequests);
 				}
 			}

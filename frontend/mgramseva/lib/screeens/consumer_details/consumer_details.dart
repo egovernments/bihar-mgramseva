@@ -136,6 +136,9 @@ class _ConsumerDetailsState extends State<ConsumerDetails> {
   }
 
   Widget buildconsumerView(Property property) {
+    var languageProvider = Provider.of<LanguageProvider>(
+        navigatorKey.currentContext!,
+        listen: false);
     return Column(
       children: [
         FormWrapper(
@@ -187,7 +190,7 @@ class _ConsumerDetailsState extends State<ConsumerDetails> {
                           SubLabelText(consumerProvider.isEdit
                               ? i18.consumer.CONSUMER_EDIT_DETAILS_SUB_LABEL
                               : i18.consumer.CONSUMER_DETAILS_SUB_LABEL),
-                          //Conniction ID displayed based in Edit Mode
+                          //Connection ID displayed based in Edit Mode
                           consumerProvider.isEdit
                               ? BuildTableText(
                                   i18.consumer.CONSUMER_CONNECTION_ID,
@@ -199,8 +202,13 @@ class _ConsumerDetailsState extends State<ConsumerDetails> {
                             i18.consumer.CONSUMER_NAME,
                             property.owners!.first.consumerNameCtrl,
                             inputFormatter: [
-                              FilteringTextInputFormatter.allow(
-                                  RegExp("[A-Za-z ]"))
+                              FilteringTextInputFormatter.allow(RegExp(
+                                  languageProvider.selectedLanguage!.enableRegEx
+                                      ? languageProvider.selectedLanguage!.regEx
+                                          .toString()
+                                          .split('^')
+                                          .last
+                                      : "[A-Za-z ]"))
                             ],
                             isRequired: true,
                             validator: (val) =>
@@ -233,8 +241,13 @@ class _ConsumerDetailsState extends State<ConsumerDetails> {
                                 Validators.maxCharactersValidator(
                                     val, 50, i18.consumer.FATHER_SPOUSE_NAME),
                             inputFormatter: [
-                              FilteringTextInputFormatter.allow(
-                                  RegExp("[A-Za-z ]"))
+                              FilteringTextInputFormatter.allow(RegExp(
+                                  languageProvider.selectedLanguage!.enableRegEx
+                                      ? languageProvider.selectedLanguage!.regEx
+                                          .toString()
+                                          .split('^')
+                                          .last
+                                      : "[A-Za-z ]"))
                             ],
                             contextKey:
                                 consumerProvider.consmerWalkthrougList[2].key,

@@ -152,7 +152,7 @@ class CommonMethods {
   static List<YearWithMonths> getFinancialYearList([int count = 5]) {
     var yearWithMonths = <YearWithMonths>[];
 
-    if (DateTime.now().month >= 4) {
+    if (DateTime.now().month > 4) {
       var year = DatePeriod(
           DateTime(DateTime.now().year, 4),
           DateTime(DateTime.now().year + 1, 4, 0, 23, 59, 59, 999),
@@ -347,5 +347,22 @@ class CommonMethods {
       var toDate = DateTime.fromMillisecondsSinceEpoch(e.toDate!);
       return (fromDate.year + 1) != toDate.year;
     });
+  }
+
+  static String getSplitStings(String data, int charCountLimit) {
+    final buffer = StringBuffer();
+    int i = 0;
+
+    while (i < data.length) {
+      buffer.write(data.substring(
+          i,
+          i + charCountLimit >= data.length
+              ? data.length
+              : i + charCountLimit));
+      buffer.write('\n');
+      i += charCountLimit;
+    }
+
+    return buffer.toString();
   }
 }

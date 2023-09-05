@@ -246,17 +246,18 @@ public class WaterServiceImpl implements WaterService {
 		enrichmentService.enrichUpdateWaterConnection(waterConnectionRequest);
 		actionValidator.validateUpdateRequest(waterConnectionRequest, businessService, previousApplicationStatus);
 		waterConnectionValidator.validateUpdate(waterConnectionRequest, searchResult, WCConstants.UPDATE_APPLICATION);
+		mDMSValidator.validateUserName(waterConnectionRequest);
 		userService.updateUser(waterConnectionRequest, searchResult);
 		// Call workflow
 //		wfIntegrator.callWorkFlow(waterConnectionRequest, property);
 		// call calculator service to generate the demand for one time fee
 		if (null != waterConnectionRequest.getWaterConnection() &&
 				null != waterConnectionRequest.getWaterConnection().getPaymentType() &&
-				WCConstants.PAYMENT_TYPE_ARREARS.equalsIgnoreCase(waterConnectionRequest.getWaterConnection().getPaymentType())) {
+						WCConstants.PAYMENT_TYPE_ARREARS.equalsIgnoreCase(waterConnectionRequest.getWaterConnection().getPaymentType())) {
 			if ((waterConnectionRequest.getWaterConnection().getArrears() != null
 					&& waterConnectionRequest.getWaterConnection().getArrears().intValue() > 0)
 					|| (waterConnectionRequest.getWaterConnection().getPenalty() != null
-					&& waterConnectionRequest.getWaterConnection().getPenalty().intValue() > 0)) {
+							&& waterConnectionRequest.getWaterConnection().getPenalty().intValue() > 0)) {
 				calculationService.calculateFeeAndGenerateDemand(waterConnectionRequest, property, false);
 			}
 		} else if (null != waterConnectionRequest.getWaterConnection() && null != waterConnectionRequest.getWaterConnection().getPaymentType() && WCConstants.PAYMENT_TYPE_ADVANCE.

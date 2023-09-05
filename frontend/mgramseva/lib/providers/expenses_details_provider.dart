@@ -31,6 +31,8 @@ import 'package:mgramseva/utils/constants/i18_key_constants.dart';
 
 import 'common_provider.dart';
 
+import 'language.dart';
+
 class ExpensesDetailsProvider with ChangeNotifier {
   late List<ExpenseWalkWidgets> expenseWalkthrougList;
   var streamController = StreamController.broadcast();
@@ -245,7 +247,7 @@ class ExpensesDetailsProvider with ChangeNotifier {
   Future<bool> createVendor(BuildContext context) async {
     bool status = false;
     var commonProvider = Provider.of<CommonProvider>(context, listen: false);
-
+    var languageProvider = Provider.of<LanguageProvider>(context, listen: false);
     try {
       Loaders.showLoadingDialog(context);
       var boundaryList = [];
@@ -304,7 +306,10 @@ class ExpensesDetailsProvider with ChangeNotifier {
           "owner": {
             "tenantId": commonProvider.userDetails?.selectedtenant?.code,
             "name": expenditureDetails.vendorNameCtrl.text.trim(),
-            "fatherOrHusbandName": "defaultName",
+            "fatherOrHusbandName": languageProvider.selectedLanguage!.enableRegEx
+                ? ApplicationLocalizations.of(context)
+                .translate(i18.expense.DEFAULT_NAME)
+                : "defaultName",
             "relationship": "FATHER",
             "gender": "MALE",
             "dob": 550261800000,

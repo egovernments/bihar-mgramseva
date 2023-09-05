@@ -20,6 +20,7 @@ import 'package:screenshot/screenshot.dart';
 
 import './js_connnector.dart' as js;
 import '../../utils/notifiers.dart';
+import '../../utils/common_methods.dart';
 
 class ConsumerBillPayments extends StatefulWidget {
   final WaterConnection? waterConnection;
@@ -98,17 +99,17 @@ class ConsumerBillPaymentsState extends State<ConsumerBillPayments> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      kIsWeb
-                          ? SizedBox(
-                              width: 70,
-                              height: 70,
-                            )
-                          : Image(
-                              width: 40,
-                              height: 40,
-                              image: NetworkImage(stateProvider
-                                  .stateInfo!.stateLogoURL
-                                  .toString())),
+                      // kIsWeb
+                      //     ? SizedBox(
+                      //         width: 70,
+                      //         height: 70,
+                      //       )
+                      //     : Image(
+                      //         width: 40,
+                      //         height: 40,
+                      //         image: NetworkImage(stateProvider
+                      //             .stateInfo!.stateLogoURL
+                      //             .toString())),
                       Container(
                         width: kIsWeb ? 290 : 90,
                         margin: EdgeInsets.all(5),
@@ -116,7 +117,7 @@ class ConsumerBillPaymentsState extends State<ConsumerBillPayments> {
                           ApplicationLocalizations.of(
                                   navigatorKey.currentContext!)
                               .translate(i18.consumerReciepts
-                                  .GRAM_PANCHAYAT_WATER_SUPPLY_AND_SANITATION),
+                                  .CONSUMER_RECIEPT_TITLE),
                           textScaleFactor: kIsWeb ? 3 : 1,
                           maxLines: 3,
                           style: TextStyle(
@@ -155,9 +156,9 @@ class ConsumerBillPaymentsState extends State<ConsumerBillPayments> {
                       ApplicationLocalizations.of(navigatorKey.currentContext!)
                           .translate(commonProvider
                               .userDetails!.selectedtenant!.code!)),
-                  getPrinterLabel(i18.consumerReciepts.RECEIPT_CONSUMER_NO,
-                      widget.waterConnection!.connectionNo),
-                  getPrinterLabel(
+                  getPrinterlabel(i18.consumerReciepts.RECEIPT_CONSUMER_NO,
+                      CommonMethods.getSplitStings(widget.waterconnection!.connectionNo!,16)),
+                  getPrinterlabel(
                     i18.consumerReciepts.RECEIPT_CONSUMER_NAME,
                     widget.waterConnection!.connectionHolders!.first.name,
                   ),
@@ -175,11 +176,11 @@ class ConsumerBillPaymentsState extends State<ConsumerBillPayments> {
                               .translate(widget.waterConnection!.additionalDetails!
                                   .street
                                   .toString()) +
-                          " " +
-                          ApplicationLocalizations.of(navigatorKey.currentContext!)
-                              .translate(widget
-                                  .waterConnection!.additionalDetails!.locality
-                                  .toString()) +
+                          // " " +
+                          // ApplicationLocalizations.of(navigatorKey.currentContext!)
+                          //     .translate(widget
+                          //         .waterconnection!.additionalDetails!.locality
+                          //         .toString()) +
                           " " +
                           ApplicationLocalizations.of(navigatorKey.currentContext!)
                               .translate(commonProvider
@@ -216,14 +217,14 @@ class ConsumerBillPaymentsState extends State<ConsumerBillPayments> {
                       ('₹' + (item.totalDue).toString())),
                   getPrinterLabel(i18.consumerReciepts.RECEIPT_AMOUNT_PAID,
                       ('₹' + (item.totalAmountPaid).toString())),
-                  getPrinterLabel(
-                      i18.consumerReciepts.RECEIPT_AMOUNT_IN_WORDS,
-                      ('Rupees ' +
-                          (NumberToWord()
-                              .convert('en-in', item.totalAmountPaid!.toInt())
-                              .toString()) +
-                          ' only')),
-                  getPrinterLabel(
+                  // getprinterlabel(
+                  //     i18.consumerReciepts.RECEIPT_AMOUNT_IN_WORDS,
+                  //     ('Rupees ' +
+                  //         (NumberToWord()
+                  //             .convert('en-in', item.totalAmountPaid!.toInt())
+                  //             .toString()) +
+                  //         ' only')),
+                  getPrinterlabel(
                       i18.consumerReciepts.CONSUMER_PENDING_AMOUNT,
                       ('₹' +
                           ((item.totalDue ?? 0) - (item.totalAmountPaid ?? 0))

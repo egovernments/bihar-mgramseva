@@ -550,13 +550,13 @@ class CommonProvider with ChangeNotifier {
     switch (language.selectedLanguage!.value) {
       case 'en_IN':
         return pw.Font.ttf(
-            await rootBundle.load('assets/fonts/Roboto/Roboto-Regular.ttf'));
+            await rootBundle.load('assets/fonts/Roboto/Hind-Regular.ttf'));
       case 'hi_IN':
         return pw.Font.ttf(
             await rootBundle.load('assets/fonts/Roboto/Hind-Regular.ttf'));
       default:
         return pw.Font.ttf(
-            await rootBundle.load('assets/fonts/Roboto/punjabi.ttf'));
+            await rootBundle.load('assets/fonts/Roboto/Roboto-Regular.ttf'));
     }
   }
 

@@ -12,7 +12,7 @@ class FooterBanner extends StatelessWidget {
         child: Image(
             width: 140,
             image: NetworkImage(
-              "$apiBaseUrl${Constants.DIGIT_FOOTER_WHITE_ENDPOINT}",
+              "${Constants.DIGIT_FOOTER_WHITE_ENDPOINT}",
             )),
       ),
     );

@@ -258,7 +258,9 @@ public class PaymentUpdateService {
 				smsRequests.addAll( getSmsRequest(waterConnectionRequest, property, paymentDetail,WCConstants.FEEDBACK_NOTIFICATION_SMS,paymentId));
 			}
 			if (!CollectionUtils.isEmpty(smsRequests)) {
+				if(config.isSMSforPaymentNotificationEnabled()) {
 					notificationUtil.sendSMS(smsRequests);
+				}
 			}
 		}
 	}
