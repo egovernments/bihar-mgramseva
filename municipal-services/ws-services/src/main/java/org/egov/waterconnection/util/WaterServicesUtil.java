@@ -307,7 +307,10 @@ public class WaterServicesUtil {
 		String url = config.getNotificationUrl() + config.getShortenerURL();
 		
 		Object response = serviceRequestRepository.getShorteningURL(new StringBuilder(url), obj);
-		return response.toString();
+		return removeProtocolFromURL(response.toString());
+	}
+	public String removeProtocolFromURL(String url){
+		return url.replaceAll("/^https?:\\/\\//", "")
 	}
 	
 	public boolean isModifyConnectionRequest(WaterConnectionRequest waterConnectionRequest) {

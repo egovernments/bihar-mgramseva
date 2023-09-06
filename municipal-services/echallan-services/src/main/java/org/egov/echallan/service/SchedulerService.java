@@ -287,9 +287,11 @@ public class SchedulerService {
 			;
 			return url;
 		} else
-			return res;
+			return removeProtocolFromURL(res);
 	}
-
+	public String removeProtocolFromURL(String url){
+		return url.replaceAll("/^https?:\\/\\//", "")
+	}
 	public EventRequest sendGenerateDemandNotification(RequestInfo requestInfo, String tenantId) {
 
 		List<ActionItem> items = new ArrayList<>();
