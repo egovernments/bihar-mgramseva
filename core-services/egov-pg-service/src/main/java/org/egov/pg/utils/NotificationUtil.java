@@ -112,7 +112,7 @@ public class NotificationUtil {
         else return removeProtocolFromURL(res);
     }
     public String removeProtocolFromURL(String url){
-        return url.replaceAll("/^https?:\\/\\//", "")
+        return url.replaceAll("/^https?:\\/\\//", "");
     }
     public String getBusinessService(TransactionRequest transactionRequest){
         StringBuilder uri = new StringBuilder();
