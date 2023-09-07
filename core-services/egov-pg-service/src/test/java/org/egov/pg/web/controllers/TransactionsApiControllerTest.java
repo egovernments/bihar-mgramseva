@@ -55,7 +55,7 @@ public class TransactionsApiControllerTest {
 
     @Before
     public void setUp() {
-        user = User.builder().userName("USER001").mobileNumber("9XXXXXXXXX").name("XYZ").tenantId("pb").emailId("").build();
+        user = User.builder().userName("USER001").mobileNumber("9XXXXXXXXX").name("XYZ").tenantId("br").emailId("").build();
         requestInfo = new RequestInfo("", "", 0L, "", "", "", "", "", "", null);
 
     }
@@ -82,7 +82,7 @@ public class TransactionsApiControllerTest {
                 .productInfo("Property Tax Payment")
                 .gateway("AXIS")
                 .module("PT")
-                .tenantId("pb")
+                .tenantId("br")
                 .consumerCode("PT-21055")
                 .taxAndPayments(Collections.singletonList(taxAndPayment))
                 .callbackUrl("http://2a91377b.ngrok.io/pg-service/payments/v1/_update")
@@ -105,7 +105,7 @@ public class TransactionsApiControllerTest {
                 .productInfo("Property Tax Payment")
                 .gateway("AXIS")
                 .module("PT")
-                .tenantId("pb")
+                .tenantId("br")
                 .callbackUrl("http://2a91377b.ngrok.io/pg-service/payments/v1/_update")
                 .user(user).build();
         when(transactionService.initiateTransaction(any(TransactionRequest.class))).thenReturn(transaction);

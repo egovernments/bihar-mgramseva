@@ -30,7 +30,7 @@ public class IdGenRepositoryTest {
     public void testIdGen() {
 
         RequestInfo requestInfo = new RequestInfo("", "", 0L, "", "", "", "", "", "8e88988e-d342-45c2-81d0-487a2a20350e", null);
-        IdGenerationResponse response = idGenRepository.getId(requestInfo, "pb", "pg.txnid",
+        IdGenerationResponse response = idGenRepository.getId(requestInfo, "br", "pg.txnid",
                 "" +
                         "PB-PG-[cy:yyyy/MM/dd]-[SEQ_EG_PG_TXN]-[d{2}]", 1);
         System.out.println(response.getIdResponses());

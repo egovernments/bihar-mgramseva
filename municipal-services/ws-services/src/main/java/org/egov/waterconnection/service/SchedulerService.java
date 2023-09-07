@@ -198,9 +198,11 @@ public class SchedulerService {
 			;
 			return url;
 		} else
-			return res;
+			return removeProtocolFromURL(res);
 	}
-
+	public String removeProtocolFromURL(String url){
+		return url.replaceAll("/^https?:\\/\\//", "")
+	}
 	public String formatPendingCollectionMessage(RequestInfo requestInfo, String tenantId, String message, Map<String, Object> additionalDetailsMap) {
 		
 		Map<String, String> attributes = new HashMap<String, String>();

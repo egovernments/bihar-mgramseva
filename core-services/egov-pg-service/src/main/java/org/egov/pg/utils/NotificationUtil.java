@@ -109,9 +109,11 @@ public class NotificationUtil {
             log.error("URL_SHORTENING_ERROR","Unable to shorten url: "+actualURL); ;
             return actualURL;
         }
-        else return res;
+        else return removeProtocolFromURL(res);
     }
-
+    public String removeProtocolFromURL(String url){
+        return url.replaceAll("/^https?:\\/\\//", "")
+    }
     public String getBusinessService(TransactionRequest transactionRequest){
         StringBuilder uri = new StringBuilder();
         uri.append(appProperties.getBillingServiceHost()).append(appProperties.getBillingServiceSearchEndpoint())

@@ -27,7 +27,7 @@ public class Test {
 
     @Before
     public void setUp() {
-        user = User.builder().userName("USER001").mobileNumber("9XXXXXXXXX").name("XYZ").tenantId("pb").emailId("").build();
+        user = User.builder().userName("USER001").mobileNumber("9XXXXXXXXX").name("XYZ").tenantId("br").emailId("").build();
         this.restTemplate = new RestTemplate();
         this.objectMapper = new ObjectMapper();
         this.environment = new MockEnvironment();
