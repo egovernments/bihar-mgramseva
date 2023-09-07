@@ -68,7 +68,7 @@ public class TransactionServiceTest {
 
     @Before
     public void setUp() {
-        user = User.builder().userName("USER001").mobileNumber("9XXXXXXXXX").name("XYZ").tenantId("pb").emailId("").build();
+        user = User.builder().userName("USER001").mobileNumber("9XXXXXXXXX").name("XYZ").tenantId("br").emailId("").build();
         requestInfo = new RequestInfo("", "", 0L, "", "", "", "", "", "", null);
         lenient().when(gatewayService.getTxnId(any(Map.class))).thenReturn(Optional.of("ORDERID"));
         lenient().doNothing().when(producer).push(any(String.class), any(Object.class));
@@ -156,12 +156,12 @@ public class TransactionServiceTest {
     public void getTransactionsSuccessTest(){
         Transaction txn = Transaction.builder().txnId("PT_001")
                 .txnAmount("100")
-                .tenantId("pb")
+                .tenantId("br")
                 .billId("ORDER0012")
                 .productInfo("Property Tax Payment")
                 .gateway("ABCD123")
                 .build();
-        TransactionCriteria criteria = TransactionCriteria.builder().tenantId("pb").txnId("PT_001").build();
+        TransactionCriteria criteria = TransactionCriteria.builder().tenantId("br").txnId("PT_001").build();
 
         when(transactionRepository.fetchTransactions(criteria)).thenReturn(Collections.singletonList(txn));
         assertEquals(1, transactionService.getTransactions(criteria).size());
@@ -175,7 +175,7 @@ public class TransactionServiceTest {
      */
     @Test(expected = CustomException.class)
     public void getTransactionsFailTest(){
-        TransactionCriteria criteria = TransactionCriteria.builder().tenantId("pb").txnId("PT_001").build();
+        TransactionCriteria criteria = TransactionCriteria.builder().tenantId("br").txnId("PT_001").build();
         when(transactionRepository.fetchTransactions(criteria)).thenThrow(new TransientDataAccessResourceException("test"));
 
         transactionService.getTransactions(criteria);
