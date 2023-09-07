@@ -37,7 +37,8 @@ class BillingServiceRepository extends BaseService {
     late DemandList demandList;
     var res = await makeRequest(
         url: Url.FETCH_DEMAND,
-        body: {'RequestInfo': {}},
+        requestInfo: getRequestInfo('_search'),
+        body: {},
         queryParameters: queryparams,
         // requestInfo: getRequestInfo('_search'),
         method: RequestType.POST);
@@ -56,7 +57,8 @@ class BillingServiceRepository extends BaseService {
     late UpdateDemandList demandList;
     var res = await makeRequest(
         url: Url.FETCH_UPDATE_DEMAND,
-        body: {'RequestInfo': {}, ...body},
+        requestInfo: getRequestInfo('_search'),
+        body: body,
         queryParameters: queryparams,
         // requestInfo: getRequestInfo('_search'),
         method: RequestType.POST);
@@ -92,7 +94,8 @@ class BillingServiceRepository extends BaseService {
     late BillList billList;
     var res = await makeRequest(
         url: Url.SEARCH_BILL,
-        body: {"RequestInfo": {}},
+        requestInfo: getRequestInfo('_search'),
+        body: {},
         queryParameters: queryparams,
         method: RequestType.POST);
     if (res != null) {
@@ -124,7 +127,8 @@ class BillingServiceRepository extends BaseService {
     late BillPayments billPaymentList;
     var res = await makeRequest(
         url: Url.FETCH_BILL_PAYMENTS,
-        body: {"RequestInfo": {}},
+        requestInfo: getRequestInfo('_search'),
+        body: {},
         queryParameters: queryparams,
         method: RequestType.POST);
     if (res != null) {
@@ -140,15 +144,7 @@ class BillingServiceRepository extends BaseService {
         url: Url.FETCH_FILESTORE_ID_PDF_SERVICE,
         body: body,
         queryParameters: params,
-        requestInfo: RequestInfo(
-            APIConstants.API_MODULE_NAME,
-            APIConstants.API_VERSION,
-            APIConstants.API_TS,
-            "_create",
-            APIConstants.API_DID,
-            APIConstants.API_KEY,
-            "string|" + 'en_IN',
-            ""),
+        requestInfo: getRequestInfo('_create'),
         method: RequestType.POST);
     if (res != null) {
       billPaymentpdf = PDFServiceResponse.fromJson(res);

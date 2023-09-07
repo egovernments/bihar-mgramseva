@@ -156,9 +156,9 @@ class ConsumerBillPaymentsState extends State<ConsumerBillPayments> {
                       ApplicationLocalizations.of(navigatorKey.currentContext!)
                           .translate(commonProvider
                               .userDetails!.selectedtenant!.code!)),
-                  getPrinterlabel(i18.consumerReciepts.RECEIPT_CONSUMER_NO,
-                      CommonMethods.getSplitStings(widget.waterconnection!.connectionNo!,16)),
-                  getPrinterlabel(
+                  getPrinterLabel(i18.consumerReciepts.RECEIPT_CONSUMER_NO,
+                      CommonMethods.getSplitStings(widget.waterConnection!.connectionNo!,16)),
+                  getPrinterLabel(
                     i18.consumerReciepts.RECEIPT_CONSUMER_NAME,
                     widget.waterConnection!.connectionHolders!.first.name,
                   ),
@@ -224,7 +224,7 @@ class ConsumerBillPaymentsState extends State<ConsumerBillPayments> {
                   //             .convert('en-in', item.totalAmountPaid!.toInt())
                   //             .toString()) +
                   //         ' only')),
-                  getPrinterlabel(
+                  getPrinterLabel(
                       i18.consumerReciepts.CONSUMER_PENDING_AMOUNT,
                       ('₹' +
                           ((item.totalDue ?? 0) - (item.totalAmountPaid ?? 0))
