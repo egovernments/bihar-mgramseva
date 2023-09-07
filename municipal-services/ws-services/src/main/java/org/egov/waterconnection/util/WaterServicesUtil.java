@@ -310,7 +310,7 @@ public class WaterServicesUtil {
 		return removeProtocolFromURL(response.toString());
 	}
 	public String removeProtocolFromURL(String url){
-		return url.replaceAll("/^https?:\\/\\//", "")
+		return url.replaceAll("/^https?:\\/\\//", "");
 	}
 	
 	public boolean isModifyConnectionRequest(WaterConnectionRequest waterConnectionRequest) {
