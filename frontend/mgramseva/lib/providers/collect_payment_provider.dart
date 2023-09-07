@@ -319,7 +319,7 @@ class CollectPaymentProvider with ChangeNotifier {
                   SizedBox(
                     height: 4,
                   ),
-                  getPrinterlabel(
+                  getPrinterLabel(
                       i18.consumerReciepts.GRAM_PANCHAYAT_WATER_SUPPLY_AND_SANITATION,
                       ""),
                   SizedBox(
@@ -330,9 +330,9 @@ class CollectPaymentProvider with ChangeNotifier {
                       ApplicationLocalizations.of(navigatorKey.currentContext!)
                           .translate(commonProvider
                               .userDetails!.selectedtenant!.code!)),
-                  getPrinterlabel(i18.consumerReciepts.RECEIPT_CONSUMER_NO,
+                  getPrinterLabel(i18.consumerReciepts.RECEIPT_CONSUMER_NO,
                       '${CommonMethods.getSplitStings(fetchBill.consumerCode!,16)}'),
-                  getPrinterlabel(
+                  getPrinterLabel(
                     i18.consumerReciepts.RECEIPT_CONSUMER_NAME,
                     '${item.paidBy}',
                   ),
@@ -399,7 +399,7 @@ class CollectPaymentProvider with ChangeNotifier {
                   //             .convert('en-in', item.totalAmountPaid!.toInt())
                   //             .toString()) +
                   //         ' only')),
-                  getPrinterlabel(
+                  getPrinterLabel(
                       i18.consumerReciepts.CONSUMER_PENDING_AMOUNT,
                       ('₹' +
                           ((item.totalDue ?? 0) - (item.totalAmountPaid ?? 0))

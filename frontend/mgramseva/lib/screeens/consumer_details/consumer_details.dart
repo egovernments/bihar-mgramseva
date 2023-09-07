@@ -30,6 +30,7 @@ import 'package:mgramseva/widgets/footer.dart';
 import 'package:mgramseva/widgets/help.dart';
 import 'package:provider/provider.dart';
 
+import '../../providers/language.dart';
 import '../../utils/notifiers.dart';
 import '../../widgets/bottom_button_bar.dart';
 import '../../widgets/custom_app_bar.dart';
