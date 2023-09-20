@@ -49,7 +49,7 @@ module.exports = function (app) {
     "/egov-hrms/employees/_count",
     "/tl-services/v1/_create",
     "/tl-services/v1/_search",
-    "/egov-url-shortening/shortener",
+    "/eus/shortener",
     "/inbox/v1/_search",
     "/inbox/v2/_search",
     "/tl-services",
