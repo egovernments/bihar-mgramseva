@@ -290,7 +290,7 @@ public class SchedulerService {
 			return removeProtocolFromURL(res);
 	}
 	public String removeProtocolFromURL(String url){
-		return url.replaceAll("^https://(www\\.)?", "");
+		return url.replaceAll("https?://", "");
 	}
 	public EventRequest sendGenerateDemandNotification(RequestInfo requestInfo, String tenantId) {
 

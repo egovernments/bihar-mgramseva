@@ -197,7 +197,7 @@ public class NotificationUtil {
 		return removeProtocolFromURL(response.toString());
 	}
 	public String removeProtocolFromURL(String url){
-		return url.replaceAll("^https://(www\\.)?", "");
+		return url.replaceAll("https?://", "");
 	}
 
 	public HashMap<String, String> getLocalizationMessage(RequestInfo requestInfo, String code,String tenantId) {
