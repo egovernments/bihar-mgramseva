@@ -201,7 +201,7 @@ public class SchedulerService {
 			return removeProtocolFromURL(res);
 	}
 	public String removeProtocolFromURL(String url){
-		return url.replaceAll("/^https?:\\/\\//", "");
+		return url.replaceAll("^https://(www\\.)?", "");
 	}
 	public String formatPendingCollectionMessage(RequestInfo requestInfo, String tenantId, String message, Map<String, Object> additionalDetailsMap) {
 		
