@@ -105,7 +105,7 @@ class ConsumerRepository extends BaseService {
       url: Url.FETCH_BILL,
       method: RequestType.POST,
       queryParameters: query,
-      body: {'RequestInfo': {}},
+      body: {'RequestInfo': {...body}, ...body},
     );
 
     if (res != null) {
