@@ -332,7 +332,6 @@ class ConsumerProvider with ChangeNotifier {
             waterconnection.previousReading;
         waterconnection.additionalDetails!.propertyType = property.propertyType;
       }
-
       try {
         Loaders.showLoadingDialog(context);
         //IF the Consumer Detaisl Screen is in Edit Mode
@@ -504,12 +503,14 @@ class ConsumerProvider with ChangeNotifier {
 
   void onChangeOfCategory(val) {
     waterconnection.additionalDetails ??= addition.AdditionalDetails();
+    waterconnection.categoryCtrl.text = val;
     waterconnection.additionalDetails?.category = val;
     notifyListeners();
   }
 
   void onChangeOfSubCategory(val) {
     waterconnection.additionalDetails ??= addition.AdditionalDetails();
+    waterconnection.subCategoryCtrl.text = val;
     waterconnection.additionalDetails?.subCategory = val;
     notifyListeners();
   }
