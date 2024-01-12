@@ -68,6 +68,7 @@ class Common {
   String get BACK => 'BACK';
   String get DEAR => 'DEAR';
   String get VIEW_ALL => 'VIEW_ALL';
+  String get VIEW => 'VIEW';
   String get ALL_NOTIFICATIONS => 'ALL_NOTIFICATIONS';
   String get CORE_FATHER_NAME => 'CORE_FATHER_NAME';
 
@@ -118,6 +119,7 @@ class Common {
 
   /// consumer(s) Found
   String get EXPENSES_FOUND => 'EXPENSES_FOUND';
+
   String get CONNECTION_ID => 'CONNECTION_ID'; //Connection ID
   String get CONSUMER_NAME => 'CONSUMER_NAME'; //Consumer Name
   String get TOTAL_DUE_AMOUNT => 'TOTAL_DUE_AMOUNT'; //Total Amount Due
@@ -146,6 +148,7 @@ class Common {
 
   /// Payment complete
   String get DOWNLOAD => 'DOWNLOAD';
+  String get CORE_DOWNLOAD => 'CORE_DOWNLOAD';
 
   /// Payment complete
   String get SHARE_BILL => 'SHARE_BILL';
@@ -196,6 +199,9 @@ class Common {
   String get SHARE_BILL_PDF => 'SHARE_BILL_PDF';
   String get CORE_PENALTY => 'CORE_PENALTY';
   String get CORE_ADVANCE => 'ADVANCE';
+  String get CORE_ADVANCE_AS_ON_TODAY => 'CORE_ADVANCE_AS_ON_TODAY';
+  String get CORE_BALANCE_AS_ON_TODAY => 'CORE_BALANCE_AS_ON_TODAY';
+  String get CREATED_ON_DATE => 'CREATED_ON_DATE';
   String get CORE_ADVANCE_ADJUSTED => 'CORE_ADVANCE_ADJUSTED';
   String get CORE_NET_DUE_AMOUNT => 'CORE_NET_DUE_AMOUNT';
   String get CORE_TOTAL_BILL_AMOUNT => 'CORE_TOTAL_BILL_AMOUNT';
@@ -222,6 +228,10 @@ class Common {
   String get RATE_PERCENTAGE => 'RATE_PERCENTAGE';
 
   String get REGION_NAME => 'REGION_NAME';
+  String get INACTIVATED_BY_NAME => 'INACTIVATED_BY_NAME';
+  String get INACTIVATED_DATE => 'INACTIVATED_DATE';
+  String get INACTIVATED_BY_UUID => 'INACTIVATED_BY_UUID';
+  String get UPLOADING_FILE => 'UPLOADING_FILE';
 }
 
 class Password {
@@ -350,6 +360,11 @@ class Expense {
   String get HAS_THIS_BILL_PAID => 'HAS_THIS_BILL_PAID';
   String get CANCELLED => 'CANCELLED';
   String get ADD_NEW_EXPENSE => 'ADD_NEW_EXPENSE';
+  String get APPLICATION_STATUS => 'APPLICATION_STATUS';
+  String get PAID_DATE => 'PAID_DATE';
+  String get HAS_ATTACHMENT => 'HAS_ATTACHMENT';
+  String get CANCELLED_TIME => 'CANCELLED_TIME';
+  String get CANCELLED_BY => 'CANCELLED_BY';
 }
 
 class CreateConsumer {
@@ -371,6 +386,9 @@ class CreateConsumer {
   String get CONSUMER_AADHAR_NUMBER => 'CONSUMER_AADHAR_NUMBER';
   String get CONSUMER_CATEGORY => 'CONSUMER_CATEGORY';
   String get CONSUMER_SUBCATEGORY => 'CONSUMER_SUBCATEGORY';
+  String get ARREARS_ON_CREATION => 'ARREARS_ON_CREATION';
+  String get CORE_PENALTY_ON_CREATION => 'CORE_PENALTY_ON_CREATION';
+  String get CORE_ADVANCE_ON_CREATION => 'CORE_ADVANCE_ON_CREATION';
   String get ARREARS => 'CONSUMER_ARREARS';
   String get CONSUMER_CONNECTION_ID => 'CONSUMER_CONNECTION_ID';
   String get SERVICE_TYPE => 'CONSUMER_SERVICE_TYPE';
@@ -494,6 +512,7 @@ class BillDetails {
   String get CURRENT_BILL => 'CURRENT_BILL';
   String get ARRERS_DUES => 'ARRERS_DUES';
   String get TOTAL_AMOUNT => 'TOTAL_AMOUNT';
+  String get TOTAL_AMOUNT_COLLECTED => 'TOTAL_AMOUNT_COLLECTED';
   String get COLLECT_PAYMENT => 'COLLECT_PAYMENT';
   String get CORE_PAID_AFTER => 'CORE_PAID_AFTER';
   String get CORE_PENALTY => 'CORE_PENALTY';
@@ -646,6 +665,7 @@ class _DashBoard {
   String get PENDING_EXPENDITURE => 'PENDING_EXPENDITURE';
   String get ACTUAL_PAYMENT => 'ACTUAL_PAYMENT';
   String get SUMMARY_REPORT => 'SUMMARY_REPORT';
+  String get EXPENSE_BILL_REPORT => 'EXPENSE_BILL_REPORT';
 
   String get USER_GAVE_FEEDBACK => 'USER_GAVE_FEEDBACK';
   String get ANNUAL_SHARE_MSG_WEB => 'ANNUAL_SHARE_MSG_WEB';
@@ -673,6 +693,8 @@ class _DashBoard {
   String get CORE_REPORTS => 'CORE_REPORTS';
   String get BILL_REPORT => 'BILL_REPORT';
   String get COLLECTION_REPORT => 'COLLECTION_REPORT';
+  String get VENDOR_REPORT => 'VENDOR_REPORT';
+  String get INACTIVE_CONSUMER_REPORT => 'INACTIVE_CONSUMER_REPORT';
   String get GPWSC_RATE_INFO => 'GPWSC_RATE_INFO';
 }
 

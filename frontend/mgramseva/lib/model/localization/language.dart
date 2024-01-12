@@ -9,7 +9,7 @@ import 'package:mgramseva/model/mdms/tax_period.dart';
 import '../../repository/water_services_calculation.dart';
 
 class LanguageList {
-  dynamic? responseInfo;
+  dynamic responseInfo;
   MdmsRes? mdmsRes;
 
   LanguageList({this.responseInfo, this.mdmsRes});
@@ -116,19 +116,23 @@ class CommonMasters {
 
 class AppVersion {
   String? latestAppVersion;
+  String? latestAppVersionIos;
   // List<LocalizationModules>? localizationModules;
 
   AppVersion({
     this.latestAppVersion,
+    this.latestAppVersionIos
   });
 
   AppVersion.fromJson(Map<String, dynamic> json) {
     latestAppVersion = json['latestAppVersion'];
+    latestAppVersionIos = json['latestAppVersionIos'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['latestAppVersion'] = this.latestAppVersion;
+    data['latestAppVersionIos'] = this.latestAppVersionIos;
 
     return data;
   }

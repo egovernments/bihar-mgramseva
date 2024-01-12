@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:horizontal_data_table/horizontal_data_table.dart';
 import 'package:mgramseva/utils/localization/application_localizations.dart';
 import 'package:mgramseva/utils/models.dart';
@@ -12,12 +11,20 @@ class BillsTable extends StatefulWidget {
   final double rightColumnWidth;
   final double? height;
   final ScrollPhysics? scrollPhysics;
+  ScrollController scrollController = ScrollController();
   BillsTable(
       {Key? key,
         required this.headerList,
         required this.tableData,
         required this.leftColumnWidth,
         required this.rightColumnWidth, this.height, this.scrollPhysics})
+      : super(key: key);
+  BillsTable.withScrollController(
+      {Key? key,
+        required this.headerList,
+        required this.tableData,
+        required this.leftColumnWidth,
+        required this.rightColumnWidth, this.height, this.scrollPhysics, required this.scrollController})
       : super(key: key);
 
   @override
@@ -27,7 +34,6 @@ class BillsTable extends StatefulWidget {
 }
 
 class _BillsTable extends State<BillsTable> {
-  final ScrollController controller = ScrollController();
   final double columnRowFixedHeight = 52.0;
 
   @override
@@ -76,7 +82,6 @@ class _BillsTable extends State<BillsTable> {
     var index = 0;
     return widget.headerList.map((e) {
       index++;
-      ;
       if (e.isSortingRequired ?? false) {
         return TextButton(
             style: TextButton.styleFrom(
@@ -134,7 +139,7 @@ class _BillsTable extends State<BillsTable> {
     return LayoutBuilder(builder: (context, constraints) {
       var data = widget.tableData[index].tableRow.first;
       return ScrollParent(
-          controller,
+          widget.scrollController,
           InkWell(
             onTap: () {
               if (data.callBack != null) {

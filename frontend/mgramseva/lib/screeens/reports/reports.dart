@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mgramseva/screeens/reports/expense_bill_report.dart';
+import 'package:mgramseva/screeens/reports/inactive_consumer_report.dart';
+import 'package:mgramseva/screeens/reports/vendor_report.dart';
 import 'package:mgramseva/screeens/reports/view_table.dart';
 import 'package:provider/provider.dart';
 
@@ -11,11 +14,11 @@ import '../../widgets/drawer_wrapper.dart';
 import 'package:mgramseva/utils/constants/i18_key_constants.dart';
 import '../../widgets/footer.dart';
 import '../../widgets/home_back.dart';
+import '../../widgets/label_text.dart';
 import '../../widgets/select_field_builder.dart';
 import '../../widgets/side_bar.dart';
 import 'bill_report.dart';
 import 'collection_report.dart';
-import 'generic_report_table.dart';
 
 class Reports extends StatefulWidget {
   const Reports({Key? key}) : super(key: key);
@@ -30,9 +33,14 @@ class _Reports extends State<Reports> with SingleTickerProviderStateMixin {
   ScrollController scrollController = ScrollController();
   var takeScreenShot = false;
   bool viewTable = false;
+  String tableTitle = 'Table Data';
 
   @override
   void dispose() {
+    var reportsProvider = Provider.of<ReportsProvider>(
+        navigatorKey.currentContext!,
+        listen: false);
+    reportsProvider.clearBillingSelection();
     super.dispose();
   }
 
@@ -49,9 +57,10 @@ class _Reports extends State<Reports> with SingleTickerProviderStateMixin {
     reportsProvider.getFinancialYearList();
   }
 
-  showTable(bool status) {
+  showTable(bool status, String title) {
     setState(() {
       viewTable = status;
+      tableTitle = title;
     });
   }
 
@@ -93,33 +102,54 @@ class _Reports extends State<Reports> with SingleTickerProviderStateMixin {
                     ? null
                     : EdgeInsets.symmetric(
                         horizontal: MediaQuery.of(context).size.width / 95),
-                height: constraints.maxHeight - 50,
+                height: constraints.maxHeight,
                 child: SingleChildScrollView(
                   controller: scrollController,
                   child: viewTable
-                      ? ViewTable(showTable)
+                      ? Container(
+                          child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            HomeBack(
+                              callback: () {
+                                setState(() {
+                                  viewTable = false;
+                                });
+                              },
+                            ),
+                            ViewTable(
+                              tableTitle: tableTitle,
+                              scrollController: scrollController,
+                            ),
+                          ],
+                        ))
                       : Column(
                           children: [
                             HomeBack(),
+                            Card(
+                                margin: EdgeInsets.only(bottom: 2),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(0.0),
+                                ),
+                                child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      LabelText(i18.dashboard.CORE_REPORTS),
+                                    ])),
+                            SizedBox(
+                              height: 30,
+                            ),
                             Card(
                               margin: EdgeInsets.only(bottom: 2),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
                               child: Padding(
-                                padding: const EdgeInsets.only(top:15,bottom: 10.0),
+                                padding: const EdgeInsets.only(
+                                    top: 15, bottom: 10.0),
                                 child: Column(
                                   children: [
-                                    Text(
-                                        ApplicationLocalizations.of(context)
-                                            .translate(
-                                                i18.dashboard.CORE_REPORTS),
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w700)),
-                                    SizedBox(
-                                      height: 30,
-                                    ),
                                     Consumer<ReportsProvider>(
                                         builder: (_, reportProvider, child) =>
                                             Container(
@@ -137,12 +167,13 @@ class _Reports extends State<Reports> with SingleTickerProviderStateMixin {
                                                     reportProvider
                                                         .getFinancialYearListDropdown(
                                                             reportProvider
-                                                                .languageList),
+                                                                .billingYearList),
                                                     true,
+                                                    readOnly: false,
                                                     controller: reportProvider
                                                         .billingyearCtrl,
                                                     key: Keys.billReport
-                                                        .BILL_REPORT_BILLING_YEAR,
+                                                        .BILL_REPORT_BILLING_YEAR, itemAsString: (i) =>"${ApplicationLocalizations.of(context).translate(i.financialYear)}",
                                                   ),
                                                   SelectFieldBuilder(
                                                     i18.demandGenerate
@@ -158,10 +189,11 @@ class _Reports extends State<Reports> with SingleTickerProviderStateMixin {
                                                             reportProvider
                                                                 .selectedBillYear),
                                                     true,
+                                                    readOnly: false,
                                                     controller: reportProvider
                                                         .billingcycleCtrl,
                                                     key: Keys.billReport
-                                                        .BILL_REPORT_BILLING_CYCLE,
+                                                        .BILL_REPORT_BILLING_CYCLE, itemAsString: (i) =>"${ApplicationLocalizations.of(context).translate(i['name'])}",
                                                   ),
                                                 ],
                                               ),
@@ -173,12 +205,8 @@ class _Reports extends State<Reports> with SingleTickerProviderStateMixin {
                             SizedBox(
                               height: 30,
                             ),
-                            Container(
-                              height: 1,
-                              color: Colors.black,
-                            ),
                             Card(
-                              margin: EdgeInsets.only(top: 15,bottom: 2),
+                              margin: EdgeInsets.only(top: 15, bottom: 2),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
@@ -188,6 +216,9 @@ class _Reports extends State<Reports> with SingleTickerProviderStateMixin {
                                   children: [
                                     BillReport(onViewClick: showTable),
                                     CollectionReport(onViewClick: showTable),
+                                    InactiveConsumerReport(onViewClick: showTable,),
+                                    ExpenseBillReport(onViewClick: showTable,),
+                                    VendorReport(onViewClick: showTable,)
                                   ],
                                 ),
                               ),
