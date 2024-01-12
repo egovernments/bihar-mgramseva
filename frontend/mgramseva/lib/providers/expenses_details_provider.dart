@@ -389,6 +389,9 @@ class ExpensesDetailsProvider with ChangeNotifier {
       if(expenditureDetails.selectedVendor != null && (expenditureDetails.selectedVendor?.owner?.mobileNumber == null || expenditureDetails.selectedVendor!.owner!.mobileNumber.isEmpty)){
         var mobileNumber = vendorList.firstWhere((vendor) => vendor.id == expenditureDetails.vendorId, orElse: () => Vendor('', '')).owner?.mobileNumber ?? '';
         expenditureDetails.selectedVendor?.owner = Owner(mobileNumber);
+        if(expenditureDetails.mobileNumberController.text.isNotEmpty && expenditureDetails.mobileNumberController.text!=mobileNumber){
+          return true;
+        }
         expenditureDetails.mobileNumberController.text = mobileNumber;
       }
       return false;
@@ -524,17 +527,18 @@ class ExpensesDetailsProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  List<DropdownMenuItem<Object>> getExpenseTypeList() {
+  List<dynamic> getExpenseTypeList({bool isSearch=false}) {
+    var commonProvider = Provider.of<CommonProvider>(
+        navigatorKey.currentContext!,
+        listen: false);
     if (languageList?.mdmsRes?.expense?.expenseList != null) {
-      return (languageList?.mdmsRes?.expense?.expenseList ?? <ExpenseType>[])
+      var tempList = languageList?.mdmsRes?.expense?.expenseList?.toList();
+      return (tempList ?? <ExpenseType>[])
           .map((value) {
-        return DropdownMenuItem(
-          value: value.code,
-          child: new Text((value.code!)),
-        );
+        return value.code;
       }).toList();
     }
-    return <DropdownMenuItem<Object>>[];
+    return <dynamic>[];
   }
 
   incrementindex(index, expenseKey) async {
@@ -555,6 +559,7 @@ class ExpensesDetailsProvider with ChangeNotifier {
           Vendor(vendorList[index].name.trim(), vendorList[index].id);
       expenditureDetails.selectedVendor?.owner ??= Owner(mobileNumber);
     }
+    notifyListeners();
   }
 
   callNotifyer() {

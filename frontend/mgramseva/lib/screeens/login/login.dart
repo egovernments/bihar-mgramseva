@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_focus_watcher/flutter_focus_watcher.dart';
@@ -95,6 +96,7 @@ class _LoginState extends State<Login> {
                   maxLength: 10,
                   validator: Validators.mobileNumberValidator,
                   textInputType: TextInputType.phone,
+                  textInputAction: TextInputAction.done,
                   key: Keys.login.LOGIN_PHONE_NUMBER_KEY,
                 ),
                 BuildTextField(
@@ -105,6 +107,12 @@ class _LoginState extends State<Login> {
                   suffixIcon: buildPasswordVisibility(),
                   maxLines: 1,
                   key: Keys.login.LOGIN_PASSWORD_KEY,
+                  textInputAction: TextInputAction.done,
+                  onSubmit: (value){
+                    if(buttonStatus){
+                      saveandLogin(context);
+                    }
+                  },
                 ),
                 GestureDetector(
                   onTap: () =>
@@ -121,6 +129,50 @@ class _LoginState extends State<Login> {
                             style: TextStyle(
                                 color: Theme.of(context).primaryColor),
                           ))),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0 ),
+                  child: RichText(
+                    maxLines: 3,
+                    text: TextSpan(
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: 'By continuing you accept our ',
+                          style: TextStyle(
+                              color: Colors.black
+                          )
+                        ),
+                        TextSpan(
+                          text: 'Privacy Policy',
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor, // set link color
+                            decoration: TextDecoration.underline,
+                          ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Navigator.pushNamed(context, Routes.PRIVACY_POLICY,arguments:true);
+                            },
+                        ),
+                        TextSpan(
+                            text: ' and ',
+                            style: TextStyle(
+                                color: Colors.black
+                            )
+                        ),
+                        TextSpan(
+                          text: 'Terms of use',
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor, // set link color
+                            decoration: TextDecoration.underline,
+                          ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Navigator.pushNamed(context, Routes.TERMS_OF_USE,arguments:true);
+                            },
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 15, bottom: 15, left: 8, right: 8),

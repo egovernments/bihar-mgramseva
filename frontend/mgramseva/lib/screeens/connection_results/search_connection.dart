@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_focus_watcher/flutter_focus_watcher.dart';
 import 'package:mgramseva/model/connection/search_connection.dart';
 import 'package:mgramseva/providers/search_connection_provider.dart';
@@ -50,7 +48,7 @@ class _SearchConsumerConnectionState extends State<SearchConsumerConnection> {
         listen: false);
     return FocusWatcher(
         child: Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
           appBar: CustomAppBar(),
           drawer: DrawerWrapper(
             Drawer(child: SideBar()),
@@ -105,6 +103,11 @@ class _SearchConsumerConnectionState extends State<SearchConsumerConnection> {
                                 onChange: (value) => searchConnectionProvider
                                     .getdetails(value, 0),
                                 key: Keys.searchConnection.SEARCH_PHONE_NUMBER_KEY,
+                                  onSubmit: (value){
+                                    searchConnectionProvider.validatesearchConnectionDetails(
+                                        context, widget.arguments, (searchConnectionProvider.searchconnection.controllers[1] == false)
+                                        ? true : false);
+                                  }
                               ),
                               Text(
                                 '\n${ApplicationLocalizations.of(context).translate(i18.common.OR)}',
@@ -124,6 +127,11 @@ class _SearchConsumerConnectionState extends State<SearchConsumerConnection> {
                                 ],
                                 onChange: (value) => searchConnectionProvider
                                     .getdetails(value, 1),
+                                onSubmit: (value){
+                                      searchConnectionProvider.validatesearchConnectionDetails(
+                                      context, widget.arguments, (searchConnectionProvider.searchconnection.controllers[1] == false)
+                                      ? true : false);
+                                },
                                 hint: ApplicationLocalizations.of(context)
                                     .translate(
                                         i18.searchWaterConnection.NAME_HINT),
@@ -153,6 +161,11 @@ class _SearchConsumerConnectionState extends State<SearchConsumerConnection> {
                                               .searchWaterConnection
                                               .OLD_CONNECTION_HINT),
                                       key: Keys.searchConnection.SEARCH_OLD_ID_KEY,
+                                        onSubmit: (value){
+                                          searchConnectionProvider.validatesearchConnectionDetails(
+                                              context, widget.arguments, (searchConnectionProvider.searchconnection.controllers[1] == false)
+                                              ? true : false);
+                                        }
                                     ),
                                     Text(
                                         '\n${ApplicationLocalizations.of(context).translate(i18.common.OR)}',
@@ -174,6 +187,11 @@ class _SearchConsumerConnectionState extends State<SearchConsumerConnection> {
                                               .searchWaterConnection
                                               .NEW_CONNECTION_HINT),
                                       key: Keys.searchConnection.SEARCH_NEW_ID_KEY,
+                                        onSubmit: (value){
+                                          searchConnectionProvider.validatesearchConnectionDetails(
+                                              context, widget.arguments, (searchConnectionProvider.searchconnection.controllers[1] == false)
+                                              ? true : false);
+                                        }
                                     ),
                                   ]),
                             ]))),

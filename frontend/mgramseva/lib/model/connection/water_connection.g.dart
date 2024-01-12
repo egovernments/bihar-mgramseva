@@ -42,7 +42,7 @@ WaterConnection _$WaterConnectionFromJson(Map<String, dynamic> json) =>
               json['processInstance'] as Map<String, dynamic>)
       ..paymentType = json['paymentType'] as String?
       ..penalty = (json['penalty'] as num?)?.toDouble()
-      ..advance = (json['advance'] as num?)?.toDouble();
+      ..advance = (json['advance'] as num?)?.toDouble().abs();
 
 Map<String, dynamic> _$WaterConnectionToJson(WaterConnection instance) =>
     <String, dynamic>{
@@ -97,7 +97,9 @@ AdditionalDetails _$AdditionalDetailsFromJson(Map<String, dynamic> json) =>
       ..doorNo = json['doorNo'] as String?
       ..collectionAmount = json['collectionAmount'] as String?
       ..collectionPendingAmount = json['collectionPendingAmount'] as String?
-      ..action = json['action'] as String?;
+      ..action = json['action'] as String?
+      ..totalAmount = json['totalamount'] as String?
+      ..appCreatedDate = json['appCreatedDate'] as num?;
 
 Map<String, dynamic> _$AdditionalDetailsToJson(AdditionalDetails instance) =>
     <String, dynamic>{
@@ -114,4 +116,6 @@ Map<String, dynamic> _$AdditionalDetailsToJson(AdditionalDetails instance) =>
       'collectionAmount': instance.collectionAmount,
       'collectionPendingAmount': instance.collectionPendingAmount,
       'action': instance.action,
+      'totalamount': instance.totalAmount,
+      'appCreatedDate': instance.appCreatedDate,
     };

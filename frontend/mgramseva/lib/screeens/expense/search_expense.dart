@@ -39,17 +39,19 @@ class _SearchExpenseState extends State<SearchExpense> {
 
   @override
   void initState() {
-    Provider.of<ExpensesDetailsProvider>(context, listen: false)..getExpenses();
+    WidgetsBinding.instance.addPostFrameCallback((_) => afterViewBuild());
     super.initState();
   }
-
+  afterViewBuild() {
+    Provider.of<ExpensesDetailsProvider>(context, listen: false)..getExpenses();
+  }
   @override
   Widget build(BuildContext context) {
     var languageProvider = Provider.of<LanguageProvider>(
         navigatorKey.currentContext!,
         listen: false);
     return KeyboardFocusWatcher(child:Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: CustomAppBar(),
       drawer: DrawerWrapper(
         Drawer(child: SideBar()),
@@ -85,20 +87,24 @@ class _SearchExpenseState extends State<SearchExpense> {
                           '\n${ApplicationLocalizations.of(context).translate(i18.common.OR)}',
                           textAlign: TextAlign.center),
                       Consumer<ExpensesDetailsProvider>(
-                        builder: (_, expensesDetailsProvider, child) =>
-                            SelectFieldBuilder(
-                          i18.expense.EXPENSE_TYPE,
-                          expenseType,
-                          '',
-                          '',
-                          onChangeOfExpense,
-                          expensesDetailsProvider.getExpenseTypeList(),
-                          false,
-                          hint:
-                              '${ApplicationLocalizations.of(context).translate(i18.common.ELECTRICITY_HINT)}',
-                          controller: expenseTypeCtrl,
-                              key: Keys.expense.SEARCH_EXPENSE_TYPE,
-                        ),
+                        builder: (_, expensesDetailsProvider, child) {
+                          return SelectFieldBuilder(
+                            i18.expense.EXPENSE_TYPE,
+                            expenseType,
+                            '',
+                            '',
+                            onChangeOfExpense,
+                            expensesDetailsProvider.getExpenseTypeList(isSearch: true)??[],
+                            false,
+                            hint:
+                            '${ApplicationLocalizations.of(context).translate(i18.common.ELECTRICITY_HINT)}',
+                            controller: expenseTypeCtrl,
+                            key: Keys.expense.SEARCH_EXPENSE_TYPE, itemAsString: (i) =>'${ApplicationLocalizations.of(context)
+                              .translate(
+                              i.toString())}',
+                          );
+                        }
+                            ,
                       ),
                       Column(
                           mainAxisAlignment: MainAxisAlignment.start,
