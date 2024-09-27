@@ -24,8 +24,6 @@ class RoleActionsFiltering {
     var isEligible = true;
 
     if(item.link == Routes.ANURAKSHAK_DASHBOARD){
-      print({hp.links?.tenantID});
-      print("${commonProvider.userDetails?.selectedtenant?.code} App Level Tenent ID ");
       if(commonProvider.userDetails?.selectedtenant?.code == hp.links?.tenantID){
         return true;
       }
