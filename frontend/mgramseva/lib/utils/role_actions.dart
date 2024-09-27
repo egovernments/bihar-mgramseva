@@ -1,5 +1,7 @@
+import 'dart:developer';
 
 import 'package:mgramseva/providers/common_provider.dart';
+import 'package:mgramseva/providers/home_provider.dart';
 import 'package:mgramseva/routers/routers.dart';
 import 'package:mgramseva/utils/constants.dart';
 import 'package:mgramseva/utils/global_variables.dart';
@@ -15,7 +17,22 @@ class RoleActionsFiltering {
     var commonProvider = Provider.of<CommonProvider>(
         navigatorKey.currentContext!,
         listen: false);
+
+     var hp = Provider.of<HomeProvider>(
+        navigatorKey.currentContext!,
+        listen: false);    
     var isEligible = true;
+
+    if(item.link == Routes.ANURAKSHAK_DASHBOARD){
+      print({hp.links?.tenantID});
+      print("${commonProvider.userDetails?.selectedtenant?.code} App Level Tenent ID ");
+      if(commonProvider.userDetails?.selectedtenant?.code == hp.links?.tenantID){
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
 
     if (getRolesBasedOnModule(item.link).length == 1) {
       getRolesBasedOnModule(item.link).forEach((element) {
@@ -101,7 +118,12 @@ class RoleActionsFiltering {
         return ['GP_ADMIN', 'SUPERUSER', 'COLLECTION_OPERATOR', 'DIV_ADMIN'];
 
       case Routes.HOUSEHOLD_DETAILS:
-        return ['BULK_DEMAND_PROCESSING', 'COLLECTION_OPERATOR', 'SUPERUSER', 'DIV_ADMIN'];
+        return [
+          'BULK_DEMAND_PROCESSING',
+          'COLLECTION_OPERATOR',
+          'SUPERUSER',
+          'DIV_ADMIN'
+        ];
 
       case Routes.SEARCH_CONSUMER_RESULT:
         return [
@@ -123,7 +145,12 @@ class RoleActionsFiltering {
       case Routes.EXPENSE_UPDATE:
         return ['EXPENSE_PROCESSING', 'SUPERUSER', 'DIV_ADMIN'];
       case Routes.HOUSEHOLDRECEIPTS:
-        return ['BULK_DEMAND_PROCESSING', 'COLLECTION_OPERATOR', 'SUPERUSER', 'DIV_ADMIN'];
+        return [
+          'BULK_DEMAND_PROCESSING',
+          'COLLECTION_OPERATOR',
+          'SUPERUSER',
+          'DIV_ADMIN'
+        ];
 
       case Routes.MANUAL_BILL_GENERATE:
         return ['BULK_DEMAND_PROCESSING', 'SUPERUSER', 'DIV_ADMIN'];

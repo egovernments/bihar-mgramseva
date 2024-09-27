@@ -10,7 +10,8 @@ enum ExceptionType {
   INVALIDINPUT,
   FETCHDATA,
   OTHER,
-  CONNECTIONISSUE
+  CONNECTIONISSUE,
+  RATE_LIMIT
 }
 
 enum MDMSType { BusinessService, ConsumerType, TaxHeadCode }

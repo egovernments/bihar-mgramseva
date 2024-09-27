@@ -116,6 +116,21 @@ Map getTenantsMDMS(String tenantId) {
     }
   };
 }
+Map getDashboardLinksMDMS(String tenantId) {
+  return {
+    "MdmsCriteria": {
+      "tenantId": tenantId,
+      "moduleDetails": [
+        {
+          "moduleName": "anurakshak-dashboard",
+          "masterDetails": [
+            {"name": "links"}
+          ]
+        }
+      ]
+    }
+  };
+}
 
 Map getServiceTypeConnectionTypePropertyTypeMDMS(String tenantId) {
   return {

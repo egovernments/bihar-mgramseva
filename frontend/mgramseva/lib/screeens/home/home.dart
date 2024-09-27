@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:mgramseva/components/notifications/notifications_list.dart';
 import 'package:mgramseva/providers/common_provider.dart';
+import 'package:mgramseva/providers/dashboard_provider.dart';
 import 'package:mgramseva/providers/home_provider.dart';
 import 'package:mgramseva/providers/language.dart';
 import 'package:mgramseva/providers/notifications_provider.dart';
@@ -29,16 +32,15 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   @override
-  void initState() {
+  void initState() {    
     WidgetsBinding.instance.addPostFrameCallback((_) => afterViewBuild());
     super.initState();
   }
 
   afterViewBuild() {
-    Provider.of<TenantsProvider>(context, listen: false)..getTenants();
+    Provider.of<TenantsProvider>(context, listen: false).getTenants();
     var languageProvider =
         Provider.of<LanguageProvider>(context, listen: false);
-
     languageProvider.getLocalizationData(context);
   }
 
@@ -129,7 +131,9 @@ class _HomeState extends State<Home> {
                           }
                         }
                       }));
-        })));
+        })
+        
+        ));
   }
 
   Widget _buildHome(BoxConstraints constraint) {
