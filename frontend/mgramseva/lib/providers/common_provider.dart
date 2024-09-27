@@ -43,6 +43,7 @@ class CommonProvider with ChangeNotifier {
   AppVersion? appVersion;
   static Map<String, String> downloadUrl = {};
 
+  @override
   dispose() {
     userLoggedStreamCtrl.close();
     super.dispose();

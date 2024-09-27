@@ -13,7 +13,9 @@ import 'common_provider.dart';
 class TenantsProvider with ChangeNotifier {
   Tenant? tenants;
   var streamController = StreamController.broadcast();
-
+  
+  
+  @override
   dispose() {
     streamController.close();
     super.dispose();

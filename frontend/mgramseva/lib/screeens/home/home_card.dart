@@ -1,10 +1,14 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mgramseva/providers/common_provider.dart';
+import 'package:mgramseva/providers/dashboard_provider.dart';
 import 'package:mgramseva/providers/home_provider.dart';
 import 'package:mgramseva/providers/language.dart';
+import 'package:mgramseva/routers/routers.dart';
 import 'package:mgramseva/utils/localization/application_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:mgramseva/utils/role_actions.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 final String assetName = 'assets/svg/HHRegister.svg';
 
@@ -24,38 +28,52 @@ class _HomeCard extends State<HomeCard> {
     languageProvider.getLocalizationData(context);
   }
 
+  
+
   List<Widget> getList(HomeProvider homeProvider) {
-    return RoleActionsFiltering().getFilteredModules().map((item) {
-      return GridTile(
-        child: new GestureDetector(
-            onTap: () => Navigator.pushNamed(context, item.link,
-                arguments: item.arguments),
-            child: new Card(
-                key: homeProvider.homeWalkthroughList
-                    .where((element) => element.label == item.label).isNotEmpty?homeProvider.homeWalkthroughList
-                    .where((element) => element.label == item.label).first
-                    .key:Key(item.label),
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(item.iconData, size: 30),
-                    Container(
-                      margin: EdgeInsets.all(10),
-                      child: Center(
-                          child: new Text(
-                        ApplicationLocalizations.of(context)
-                            .translate(item.label),
-                            textScaleFactor: MediaQuery.of(context).size.width<400 ? 0.90 : 1,
-                        style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.w400),
-                        textAlign: TextAlign.center,
-                      )),
-                    )
-                  ],
-                ))),
-      );
+   
+    return RoleActionsFiltering().getFilteredModules().map((item) {            
+          return GridTile(
+            child: new GestureDetector(
+                onTap: () {
+                  if (item.link == Routes.ANURAKSHAK_DASHBOARD) {
+                    launchUrl(Uri.parse('${homeProvider.anurakshakDashboardLink}'));
+                  } else {
+                    Navigator.pushNamed(context, item.link,
+                        arguments: item.arguments);
+                  }
+                },
+                child: new Card(
+                    key: homeProvider.homeWalkthroughList
+                            .where((element) => element.label == item.label)
+                            .isNotEmpty
+                        ? homeProvider.homeWalkthroughList
+                            .where((element) => element.label == item.label)
+                            .first
+                            .key
+                        : Key(item.label),
+                    margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Icon(item.iconData, size: 30),
+                        Container(
+                          margin: EdgeInsets.all(10),
+                          child: Center(
+                              child: new Text(
+                            ApplicationLocalizations.of(context)
+                                .translate(item.label),
+                            textScaleFactor:
+                                MediaQuery.of(context).size.width < 400 ? 0.90 : 1,
+                            style: TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.w400),
+                            textAlign: TextAlign.center,
+                          )),
+                        )
+                      ],
+                    ))),
+          );          
     }).toList();
   }
 
@@ -68,7 +86,8 @@ class _HomeCard extends State<HomeCard> {
         return Container(
             child: commonProvider.userDetails?.selectedtenant != null &&
                     commonProvider.userDetails?.userRequest != null
-                ? (new GridView.count(
+                ? 
+                (new GridView.count(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     crossAxisCount: 3,

@@ -1,6 +1,7 @@
 
 import 'package:mgramseva/model/dashboard/revenue_dashboard.dart';
 import 'package:mgramseva/model/dashboard/revenue_chart.dart';
+import 'package:mgramseva/model/mdms/links.dart';
 import 'package:mgramseva/providers/common_provider.dart';
 import 'package:mgramseva/services/request_info.dart';
 import 'package:mgramseva/services/base_service.dart';
@@ -142,6 +143,25 @@ class DashBoardRepository extends BaseService {
       revenueGraph = RevenueGraph.fromJson(res['responseData']);
     }
     return revenueGraph;
+  }
+
+
+  Future<LinkResponse> fetchDashboardLinks(Map body, [String? token]) async {
+    var commonProvider = Provider.of<CommonProvider>(
+        navigatorKey.currentContext!,
+        listen: false);
+    late LinkResponse links;
+    final requestInfo = RequestInfo('mGramSeva', .01, "", "search", "", "", "",
+       token ?? commonProvider.userDetails!.accessToken);
+    var res = await makeRequest(
+        url: Url.MDMS,
+        body: body,
+        requestInfo: requestInfo,
+        method: RequestType.POST);
+    if (res != null) {
+      links = LinkResponse.fromJson(res['MdmsRes']['anurakshak-dashboard']);
+    }
+    return links;
   }
 
 }

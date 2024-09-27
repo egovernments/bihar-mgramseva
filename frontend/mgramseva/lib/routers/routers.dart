@@ -87,4 +87,7 @@ class Routes {
   static const String TERMS_OF_USE = '/terms';
   static const String PRIVACY_POLICY_S = '/privacy/';
   static const String TERMS_OF_USE_S = '/terms/';
+  
+  // Hrms
+  static const String ANURAKSHAK_DASHBOARD = '/home/dashboard/anurakshak';
 }
