@@ -15,8 +15,8 @@ import random
 
 host = 'https://www.peyjalbihar.org/'
 loginUrl = host + 'mgramseva/login'
-username = '8989898989'  # '8989898989'
-password = 'eGov@123'
+username = ''   #add super user mobile number
+password = ''   #add super user password
 stateTenantId = 'br'
 path = 'updated-user.xlsx'
 # cmd=['kubectl', '-it', 'exec', 'kafka-v2-0',  '-n', 'mgramseva', '--', 'kafka-console-producer', '--broker-list', 'localhost:9092', '--topic',  'egov.core.notification.sms']
