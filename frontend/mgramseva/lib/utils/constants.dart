@@ -102,8 +102,8 @@ class Constants {
         Routes.GPWSC_DETAILS_AND_RATE_INFO, {}),
     HomeItem(
         "ANURAKSHAK_DASHBOARD",
-        (i18.dashboard.CORE_REPORTS),
-        Icons.assessment,
+        (i18.dashboard.CORE_REPORTS),        
+         HomeIcons.anurakshak,
         Routes.ANURAKSHAK_DASHBOARD, {}),
   ];
 
