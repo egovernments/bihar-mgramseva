@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
 import 'dart:isolate';
 import 'dart:ui';
@@ -146,6 +147,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   afterViewBuild() async {
+    
     if (kIsWeb) return;
     IsolateNameServer.registerPortWithName(
         _port.sendPort, 'downloader_send_port');
@@ -153,7 +155,7 @@ class _MyAppState extends State<MyApp> {
       String id = data[0];
       DownloadTaskStatus status = data[1];
       int progress = data[2];
-      print("Download progress: "+progress.toString());
+      // print("Download progress: "+progress.toString());
       if (status == DownloadTaskStatus.complete) {
         if (CommonProvider.downloadUrl.containsKey(id)) {
           if (CommonProvider.downloadUrl[id] != null) OpenFilex.open(CommonProvider.downloadUrl[id] ?? '');
@@ -165,9 +167,9 @@ class _MyAppState extends State<MyApp> {
             CommonProvider.downloadUrl.remove(id);
         }
       }
-      setState(() {
-        print("Download progress: "+progress.toString());
-      });
+      // setState(() {
+      //   print("Download progress: "+progress.toString());
+      // });
     });
     FlutterDownloader.registerCallback(downloadCallback);
   }
@@ -293,8 +295,8 @@ class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
     var commonProvider = Provider.of<CommonProvider>(context, listen: false);
-    var languageProvider =
-        Provider.of<LanguageProvider>(context, listen: false);
+    
+        
     return Scaffold(
       body: StreamBuilder(
           stream: commonProvider.userLoggedStreamCtrl.stream,
@@ -309,7 +311,7 @@ class _LandingPageState extends State<LandingPage> {
                   return Notifiers.networkErrorPage(context, () {});
                 } else {
                   if (snapshot.data != null &&
-                      commonProvider.userDetails!.isFirstTimeLogin == true) {
+                      commonProvider.userDetails!.isFirstTimeLogin == true) {                        
                     return Home();
                   }
                   return SelectLanguage();

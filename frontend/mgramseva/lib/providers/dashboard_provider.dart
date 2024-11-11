@@ -1,12 +1,16 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:mgramseva/model/common/metric.dart';
 import 'package:mgramseva/model/connection/water_connection.dart';
 import 'package:mgramseva/model/connection/water_connections.dart';
 import 'package:mgramseva/model/expenses_details/expenses_details.dart';
+import 'package:mgramseva/model/mdms/links.dart';
 import 'package:mgramseva/model/mdms/property_type.dart';
 import 'package:mgramseva/providers/common_provider.dart';
+import 'package:mgramseva/providers/home_provider.dart';
 import 'package:mgramseva/repository/core_repo.dart';
 import 'package:mgramseva/repository/dashboard.dart';
 import 'package:mgramseva/repository/expenses_repo.dart';
@@ -45,6 +49,8 @@ class DashBoardProvider with ChangeNotifier {
   var scrollController = ScrollController();
   Map? userFeedBackInformation;
   List<Metric>? metricInformation;
+  LinkResponse? dashboardLinks;
+
 
   @override
   void dispose() {
@@ -809,4 +815,40 @@ class DashBoardProvider with ChangeNotifier {
             userFeedBackInformation ?? {})
         .pdfPreview();
   }
+
+
+    Future<void> getDashboardLinks({String? tenentId}) async {
+    try {
+      var commonProvider = Provider.of<CommonProvider>(
+          navigatorKey.currentContext!,
+          listen: false);
+
+          var homeProvider = Provider.of<HomeProvider>(
+          navigatorKey.currentContext!,
+          listen: false);    
+      var userResponse = await DashBoardRepository().fetchDashboardLinks(getDashboardLinksMDMS(commonProvider.userDetails!.userRequest!.tenantId.toString()));
+      userResponse.links.forEach((item){
+        if(tenentId != null){
+               if(tenentId == item.tenantID){
+          if(item.isEnabled){
+          homeProvider.setAnurakshakDashboardLink(value: "${item.dashboardURL}",link: item);          
+          }
+        }
+        }
+        else if(commonProvider.userDetails?.selectedtenant?.code == item.tenantID){
+          if(item.isEnabled){
+          homeProvider.setAnurakshakDashboardLink(value: "${item.dashboardURL}",link: item);          
+          }
+        }
+      });
+      
+      dashboardLinks = userResponse;
+      streamController.add(userResponse);
+        } catch (e, s) {
+      ErrorHandler().allExceptionsHandler(navigatorKey.currentContext!, e, s);
+      streamController.addError('error');
+    }
+  }
+
+
 }
