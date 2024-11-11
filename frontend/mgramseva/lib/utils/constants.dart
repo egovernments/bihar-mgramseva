@@ -97,12 +97,12 @@ class Constants {
         Routes.DASHBOARD, {}),
     HomeItem(
         "CORE_GPWSC_DETAILS_AND_RATE_INFO",
-        (i18.dashboard.CORE_GPWSC_DETAILS_AND_RATE_INFO),
+        (i18.homeWalkThroughMSg.CORE_GPWSC_DETAILS_AND_RATE_INFO),
         HomeIcons.gpwscdetails,
         Routes.GPWSC_DETAILS_AND_RATE_INFO, {}),
     HomeItem(
         "ANURAKSHAK_DASHBOARD",
-        (i18.dashboard.CORE_REPORTS),        
+        (i18.homeWalkThroughMSg.ANURAKSHAK_DASHBOARD_INFO),        
          HomeIcons.anurakshak,
         Routes.ANURAKSHAK_DASHBOARD, {}),
   ];
