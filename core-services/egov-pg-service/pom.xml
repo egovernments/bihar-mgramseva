@@ -40,10 +40,10 @@
       <version>42.7.1</version>
     </dependency>
     <dependency>
-    <groupId>org.flywaydb</groupId>
-    <artifactId>flyway-core</artifactId>
-    <version>9.22.3</version>
-  </dependency>
+     <groupId>org.flywaydb</groupId>
+     <artifactId>flyway-core</artifactId>
+     <version>9.22.3</version>
+    </dependency>
     <dependency>
       <groupId>com.paytm</groupId>
       <artifactId>paytm-checksum</artifactId>
