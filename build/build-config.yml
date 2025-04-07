@@ -43,6 +43,7 @@ config:
         dockerfile: "build/maven/Dockerfile"
       - work-dir: "core-services/egov-pg-service/src/main/resources/db"
         image-name: "egov-pg-service-db"
+
   - name: "builds/bihar-mGramSeva/municipal-services/ws-calculator"
     build:
       - work-dir: "municipal-services/ws-calculator"
@@ -113,3 +114,132 @@ config:
         dockerfile: "build/maven/Dockerfile"
       - work-dir: "municipal-services/property-services/src/main/resources/db"
         image-name: "property-services-db"
+  - name: "builds/bihar-mGramSeva/business-services/egov-apportion-service"
+    build:
+      - work-dir: "business-services/egov-apportion-service"
+        image-name: "egov-apportion-service"
+        dockerfile: "build/maven/Dockerfile"
+      - work-dir: "business-services/egov-apportion-service/src/main/resources/db"
+        image-name: "egov-apportion-service-db"
+  - name: "builds/bihar-mGramSeva/business-services/collection-services"
+    build:
+      - work-dir: "business-services/collection-services"
+        image-name: "collection-services"
+        dockerfile: "build/maven/Dockerfile"
+      - work-dir: "business-services/collection-services/src/main/resources/db"
+        image-name: "collection-services-db"
+
+  - name: "builds/bihar-mGramSeva/business-services/egf-instrument"
+    build:
+      - work-dir: "business-services/egf-instrument"
+        image-name: "egf-instrument"
+        dockerfile: "build/maven/Dockerfile"
+      - work-dir: "business-services/egf-instrument/src/main/resources/db"
+        image-name: "egf-instrument-db"
+
+  - name: "builds/bihar-mGramSeva/business-services/egf-master"
+    build:
+     - work-dir: "business-services/egf-master"
+       image-name: "egf-master"
+       dockerfile: "build/maven/Dockerfile"
+     - work-dir: "business-services/egf-master/src/main/resources/db"
+       image-name: "egf-master-db"
+
+  - name: "builds/bihar-mGramSeva/business-services/egov-hrms"
+    build:
+     - work-dir: "business-services/egov-hrms"
+       image-name: "egov-hrms"
+       dockerfile: "build/maven/Dockerfile"
+     - work-dir: "business-services/egov-hrms/src/main/resources/db"
+       image-name: "egov-hrms-db"
+
+  - name: "builds/bihar-mGramSeva/business-services/dashboard-analytics"
+    build:
+     - work-dir: "business-services/dashboard-analytics"
+       image-name: "dashboard-analytics"
+       dockerfile: "build/maven/Dockerfile"
+
+  - name: "builds/bihar-mGramSeva/business-services/dashboard-ingest"
+    build:
+      - work-dir: "business-services/dashboard-ingest"
+        image-name: "dashboard-ingest"
+        dockerfile: "build/maven/Dockerfile"
+  - name: "builds/bihar-mGramSeva/core-services/egov-accesscontrol"
+    build:
+      - work-dir: "core-services/egov-accesscontrol"
+        image-name: "egov-accesscontrol"
+        dockerfile: "build/maven/Dockerfile"
+  - name: "builds/bihar-mGramSeva/core-services/egov-enc-service"
+    build:
+      - work-dir: "core-services/egov-enc-service"
+        image-name: "egov-enc-service"
+        dockerfile: "build/maven/Dockerfile"
+      - work-dir: "core-services/egov-enc-service/src/main/resources/db"
+        image-name: "egov-enc-service-db"
+  - name: "builds/bihar-mGramSeva/core-services/egov-filestore"
+    build:
+      - work-dir: "core-services/egov-filestore"
+        image-name: "egov-filestore"
+        dockerfile: "build/maven/Dockerfile"
+      - work-dir: "core-services/egov-filestore/src/main/resources/db"
+        image-name: "egov-filestore-db"
+  - name: "builds/bihar-mGramSeva/core-services/egov-indexer"
+    build:
+      - work-dir: "core-services/egov-indexer"
+        image-name: "egov-indexer"
+        dockerfile: "build/maven/Dockerfile"
+      - work-dir: "core-services/egov-indexer/src/main/resources/db"
+        image-name: "egov-indexer-db"
+
+  - name: "builds/bihar-mGramSeva/core-services/egov-localization"
+    build:
+      - work-dir: "core-services/egov-localization"
+        image-name: "egov-localization"
+        dockerfile: "build/maven/Dockerfile"
+      - work-dir: "core-services/egov-localization/src/main/resources/db"
+        image-name: "egov-localization-db"
+
+  - name: "builds/bihar-mGramSeva/core-services/egov-location"
+    build:
+      - work-dir: "core-services/egov-location"
+        image-name: "egov-location"
+        dockerfile: "build/maven/Dockerfile"
+      - work-dir: "core-services/egov-location/src/main/resources/db"
+        image-name: "egov-location-db"
+  - name: "builds/bihar-mGramSeva/core-services/egov-mdms-service"
+    build:
+      - work-dir: "core-services/egov-mdms-service"
+        image-name: "egov-mdms-service"
+        dockerfile: "build/maven/Dockerfile"
+  - name: "builds/bihar-mGramSeva/core-services/egov-otp"
+    build:
+      - work-dir: "core-services/egov-otp"
+        image-name: "egov-otp"
+        dockerfile: "build/maven/Dockerfile"
+      - work-dir: "core-services/egov-otp/src/main/resources/db"
+        image-name: "egov-otp-db"
+
+  - name: "builds/bihar-mGramSeva/core-services/egov-persister"
+    build:
+      - work-dir: "core-services/egov-persister"
+        image-name: "egov-persister"
+        dockerfile: "build/maven/Dockerfile"
+  - name: "builds/bihar-mGramSeva/core-services/egov-searcher"
+    build:
+      - work-dir: "core-services/egov-searcher"
+        image-name: "egov-searcher"
+        dockerfile: "build/maven/Dockerfile"
+  - name: "builds/bihar-mGramSeva/core-services/egov-workflow-v2"
+    build:
+      - work-dir: "core-services/egov-workflow-v2"
+        image-name: "egov-workflow-v2"
+        dockerfile: "build/maven/Dockerfile"
+      - work-dir: "core-services/egov-workflow-v2/src/main/resources/db"
+        image-name: "egov-workflow-v2-db"
+  - name: "builds/bihar-mGramSeva/core-services/egov-url-shortening"
+    build:
+      - work-dir: "core-services/egov-url-shortening"
+        image-name: "egov-url-shortening"
+        dockerfile: "build/maven/Dockerfile"
+      - work-dir: "core-services/egov-url-shortening/src/main/resources/db"
+        image-name: "egov-url-shortening-db"
