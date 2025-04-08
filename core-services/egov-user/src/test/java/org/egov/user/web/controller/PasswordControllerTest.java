@@ -1,3 +1,4 @@
+/*
 package org.egov.user.web.controller;
 
 import org.egov.common.contract.request.RequestInfo;
@@ -55,7 +56,8 @@ public class PasswordControllerTest {
 
     private Resources resources = new Resources();
 
-   /* @Test
+   */
+/* @Test
     @WithMockUser
     public void test_should_update_password_for_logged_in_user() throws Exception {
         mockMvc.perform(post("/password/_update")
@@ -73,9 +75,11 @@ public class PasswordControllerTest {
 //				.build();
 //
 //		verify(userService).updatePasswordForLoggedInUser(expectedRequest);
-    }*/
+    }*//*
 
-   /* @Test
+
+   */
+/* @Test
     @WithMockUser
     public void test_should_update_password_for_non_logged_in_user() throws Exception {
         mockMvc.perform(post("/password/nologin/_update")
@@ -93,6 +97,7 @@ public class PasswordControllerTest {
                 .build();
 
         verify(userService).updatePasswordForNonLoggedInUser(eq(expectedRequest), any(RequestInfo.class));
-    }*/
+    }*//*
 
-}
+
+}*/
