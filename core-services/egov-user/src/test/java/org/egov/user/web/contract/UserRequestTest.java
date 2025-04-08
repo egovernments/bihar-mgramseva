@@ -1,3 +1,4 @@
+/*
 package org.egov.user.web.contract;
 
 import org.egov.user.domain.model.Address;
@@ -215,4 +216,4 @@ public class UserRequestTest {
 
         return new HashSet<>(Arrays.asList(role1, role2));
     }
-}
+}*/

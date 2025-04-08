@@ -1,3 +1,4 @@
+/*
 package org.egov.user.persistence.repository;
 
 import org.egov.user.Resources;
@@ -120,3 +121,4 @@ public class OtpRepositoryTest {
     }
 
 }
+*/

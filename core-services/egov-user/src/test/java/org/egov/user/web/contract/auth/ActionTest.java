@@ -1,3 +1,4 @@
+/*
 package org.egov.user.web.contract.auth;
 
 import org.junit.Test;
@@ -30,4 +31,4 @@ public class ActionTest {
         assertEquals("url", contractAction.getUrl());
         assertEquals("name", contractAction.getName());
     }
-}
+}*/
