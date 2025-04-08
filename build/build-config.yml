@@ -243,3 +243,9 @@ config:
         dockerfile: "build/maven/Dockerfile"
       - work-dir: "core-services/egov-url-shortening/src/main/resources/db"
         image-name: "egov-url-shortening-db"
+  - name: "builds/bihar-mGramSeva/core-services/pdf-service"
+    build:
+      - work-dir: "core-services/pdf-service"
+        image-name: "pdf-service"
+      - work-dir: "core-services/pdf-service/migration"
+        image-name: "pdf-service-db"
