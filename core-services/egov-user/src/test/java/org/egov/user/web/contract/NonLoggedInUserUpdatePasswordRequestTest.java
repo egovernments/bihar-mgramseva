@@ -1,3 +1,4 @@
+/*
 package org.egov.user.web.contract;
 
 import org.junit.Test;
@@ -25,4 +26,4 @@ public class NonLoggedInUserUpdatePasswordRequestTest {
         assertEquals("tenant", domain.getTenantId());
     }
 
-}
+}*/

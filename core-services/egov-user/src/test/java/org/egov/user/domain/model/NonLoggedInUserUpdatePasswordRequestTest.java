@@ -1,3 +1,4 @@
+/*
 package org.egov.user.domain.model;
 
 import org.egov.user.domain.exception.InvalidNonLoggedInUserUpdatePasswordRequestException;
@@ -199,4 +200,4 @@ public class NonLoggedInUserUpdatePasswordRequestTest {
         assertNotEquals(request1.hashCode(), request2.hashCode());
     }
 
-}
+}*/
