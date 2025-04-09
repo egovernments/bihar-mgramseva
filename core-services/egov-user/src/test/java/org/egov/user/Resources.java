@@ -1,3 +1,4 @@
+/*
 package org.egov.user;
 
 import org.apache.commons.io.IOUtils;
@@ -15,3 +16,4 @@ public class Resources {
         }
     }
 }
+*/

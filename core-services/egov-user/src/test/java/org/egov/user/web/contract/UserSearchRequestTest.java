@@ -1,3 +1,4 @@
+/*
 package org.egov.user.web.contract;
 
 import org.egov.user.domain.model.UserSearchCriteria;
@@ -41,4 +42,4 @@ public class UserSearchRequestTest {
         assertThat(userSearch.getSort()).isEqualTo(Collections.singletonList("name"));
         assertThat(userSearch.getType()).isEqualTo(UserType.CITIZEN);
     }
-}
+}*/

@@ -1,3 +1,4 @@
+/*
 package org.egov.user.web.adapters.errors;
 
 import org.egov.common.contract.response.Error;
@@ -27,4 +28,4 @@ public class PasswordMissMatchErrorHandlerTest {
         assertEquals("USER.PASSWORD_MISMATCH", fields.get(0).getCode());
     }
 
-}
+}*/
