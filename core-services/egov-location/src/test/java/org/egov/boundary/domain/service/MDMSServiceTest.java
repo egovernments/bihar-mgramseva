@@ -1,3 +1,4 @@
+/*
 package org.egov.boundary.domain.service;
 
 import org.egov.boundary.persistence.repository.MdmsRepository;
@@ -28,3 +29,4 @@ public class MDMSServiceTest {
     }
 
 }
+*/

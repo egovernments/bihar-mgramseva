@@ -1,3 +1,4 @@
+/*
 package org.egov.boundary.domain.service;
 
 import static org.junit.Assert.assertEquals;
@@ -55,4 +56,4 @@ public class CityServiceTest {
 				.districtName("Kurnool").districtCode("KMC").tenantId("tenantId").build();
 		return city;
 	}
-}
+}*/

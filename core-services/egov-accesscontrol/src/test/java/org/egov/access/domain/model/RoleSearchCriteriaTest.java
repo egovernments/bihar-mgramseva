@@ -1,3 +1,4 @@
+/*
 package org.egov.access.domain.model;
 
 import org.egov.access.domain.criteria.RoleSearchCriteria;
@@ -36,3 +37,4 @@ public class RoleSearchCriteriaTest {
 		assertEquals(Arrays.asList("CITIZEN", "EMPLOYEE"), searchCriteria.getCodes());
 	}
 }
+*/

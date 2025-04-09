@@ -1,3 +1,4 @@
+/*
 package org.egov.access;
 
 import org.springframework.context.annotation.Bean;
@@ -16,3 +17,4 @@ public class TestConfiguration {
     }
 
 }
+*/

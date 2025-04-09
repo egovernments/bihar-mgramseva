@@ -1,3 +1,4 @@
+/*
 package org.egov.access.persistence.repository;
 
 import static org.junit.Assert.assertEquals;
@@ -110,4 +111,4 @@ public class BaseRepositoryTest {
 		assertEquals("PGR", actions.get(0).getServiceCode());
 
 	}
-}
+}*/

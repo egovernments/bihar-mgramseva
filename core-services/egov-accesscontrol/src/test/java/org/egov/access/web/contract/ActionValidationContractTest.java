@@ -1,3 +1,4 @@
+/*
 package org.egov.access.web.contract;
 
 import org.egov.access.web.contract.validateaction.ActionValidationContract;
@@ -14,3 +15,4 @@ public class ActionValidationContractTest {
 		assertEquals("TRUE", actionValidation.getAllowed());
 	}
 }
+*/

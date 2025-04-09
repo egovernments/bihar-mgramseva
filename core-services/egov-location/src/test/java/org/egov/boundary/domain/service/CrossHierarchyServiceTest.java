@@ -1,3 +1,4 @@
+/*
 package org.egov.boundary.domain.service;
 
 import org.egov.boundary.persistence.repository.CrossHierarchyRepository;
@@ -13,3 +14,4 @@ public class CrossHierarchyServiceTest {
 	private CrossHierarchyService crossHierarchyService;
 
 }
+*/

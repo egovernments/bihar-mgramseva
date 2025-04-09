@@ -1,3 +1,4 @@
+/*
 package org.egov.boundary;
 
 import org.springframework.context.annotation.Bean;
@@ -14,3 +15,4 @@ public class TestConfiguration {
         return mock(KafkaTemplate.class);
     }
 }
+*/

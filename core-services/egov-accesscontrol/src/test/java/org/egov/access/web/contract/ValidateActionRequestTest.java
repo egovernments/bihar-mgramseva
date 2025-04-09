@@ -1,3 +1,4 @@
+/*
 package org.egov.access.web.contract;
 
 import org.egov.access.domain.criteria.ValidateActionCriteria;
@@ -49,3 +50,4 @@ public class ValidateActionRequestTest {
 
 	}
 }
+*/

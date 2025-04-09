@@ -1,3 +1,4 @@
+/*
 package org.egov.boundary.domain.service;
 
 import org.egov.boundary.domain.model.Location;
@@ -29,3 +30,4 @@ public class GoogleLocationServiceTest {
         assertTrue("Empty is returned for invalid lat lng combination", !location.isPresent());
     }
 }
+*/

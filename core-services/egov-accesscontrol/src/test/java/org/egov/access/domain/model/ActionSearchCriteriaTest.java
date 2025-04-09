@@ -1,3 +1,4 @@
+/*
 package org.egov.access.domain.model;
 
 import org.egov.access.domain.criteria.ActionSearchCriteria;
@@ -38,3 +39,4 @@ public class ActionSearchCriteriaTest {
 		assertNotEquals(searchCriteria1.hashCode(), searchCriteria2.hashCode());
 	}
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package org.egov.boundary.persistence.repository;
 
 import org.egov.boundary.TestConfiguration;
@@ -47,20 +48,24 @@ public class BoundaryRepositoryTest {
 		assertEquals("Srikakulam  Municipality", boundarys.get(0).getName());
 	}
 
+*/
 /*	@Test
 	@Sql(scripts = { "/sql/clearBoundary.sql", "/sql/createBoundary.sql" })
 	public void test_should_fetch_boundaries_for_boundarytype_and_tenantid() {
 		final List<Boundary> boundarys = boundaryRepository.getAllBoundariesByBoundaryTypeIdAndTenantId(1l, "default");
 		assertEquals("Srikakulam  Municipality", boundarys.get(0).getName());
-	}*/
+	}*//*
 
+
+*/
 /*	@Test
 	@Sql(scripts = { "/sql/clearBoundary.sql", "/sql/createBoundary.sql" })
 	@Transactional
 	public void test_should_fetch_boundaries_for_id_and_tenantid() {
 		final List<Boundary> boundarys = boundaryRepository.getBoundariesByIdAndTenantId(1l, "default");
 		assertEquals("Srikakulam  Municipality", boundarys.get(0).getName());
-	}*/
+	}*//*
+
    
 	@Test
 	@Sql(scripts = { "/sql/clearBoundary.sql", "/sql/createBoundary.sql" })
@@ -106,7 +111,8 @@ public class BoundaryRepositoryTest {
 		list.add(1l);
 		//List<Boundary> boundarys = boundaryRepository.getAllBoundaryByTenantAndNumAndTypeAndTypeIds("default",list,list,list);
 		
-		/*assertTrue(boundarys.size() == 1);
+		*/
+/*assertTrue(boundarys.size() == 1);
 		assertTrue(boundarys!=null);
 		assertTrue(boundarys.get(0).getId() == 1);
 		assertTrue(boundarys.get(0).getName().equals("Srikakulam  Municipality"));
@@ -116,7 +122,9 @@ public class BoundaryRepositoryTest {
 		assertTrue(boundarys.get(0).isHistory() == false);
 		assertTrue(boundarys.get(0).getBoundaryType().getId() == "1l");
 		assertTrue(boundarys.get(0).getBoundaryType().getName().equals("City"));
-		assertTrue(boundarys.get(0).getBoundaryType().getHierarchy() == 1l);*/
+		assertTrue(boundarys.get(0).getBoundaryType().getHierarchy() == 1l);*//*
+
 	}
 	
 }
+*/

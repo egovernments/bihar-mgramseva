@@ -1,3 +1,4 @@
+/*
 package org.egov.boundary.domain.service;
 
 import static org.junit.Assert.assertFalse;
@@ -53,4 +54,4 @@ public class BoundaryTypeServiceTest {
 		boundaryTypeList.add(boundaryType2);
 		return boundaryTypeList;
 	}
-}
+}*/

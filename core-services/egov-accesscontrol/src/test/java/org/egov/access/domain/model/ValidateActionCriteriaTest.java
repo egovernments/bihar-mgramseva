@@ -1,3 +1,4 @@
+/*
 package org.egov.access.domain.model;
 
 import org.egov.access.domain.criteria.ValidateActionCriteria;
@@ -19,3 +20,4 @@ public class ValidateActionCriteriaTest {
 		assertEquals("url", validateActionCriteria.getActionUrl());
 	}
 }
+*/

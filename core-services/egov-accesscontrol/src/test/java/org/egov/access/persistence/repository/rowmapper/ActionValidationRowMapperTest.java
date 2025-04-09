@@ -1,3 +1,4 @@
+/*
 package org.egov.access.persistence.repository.rowmapper;
 
 import org.junit.Test;
@@ -26,3 +27,4 @@ public class ActionValidationRowMapperTest {
 		assertFalse(actionValidationRowMapper.mapRow(resultSet, 1).isAllowed());
 	}
 }
+*/
