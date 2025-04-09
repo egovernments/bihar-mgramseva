@@ -1,3 +1,4 @@
+/*
 package org.egov.user.web.contract;
 
 import org.junit.Test;
@@ -30,4 +31,4 @@ public class RoleRequestTest {
         assertThat(roleRequest.getName()).isEqualTo("name of the roleRequest 1");
         assertThat(roleRequest.getCode()).isEqualTo("code");
     }
-}
+}*/

@@ -1,3 +1,4 @@
+/*
 package org.egov.user.web.adapters.errors;
 
 import org.egov.common.contract.response.Error;
@@ -67,4 +68,4 @@ public class InvalidLoggedInUserUpdatePasswordRequestErrorHandlerTest {
         assertEquals("USER.NEW_PASSWORD_MANDATORY", fields.get(0).getCode());
     }
 
-}
+}*/

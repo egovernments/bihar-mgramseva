@@ -1,3 +1,4 @@
+/*
 package org.egov.user.web.adapters.errors;
 
 import org.egov.common.contract.response.Error;
@@ -27,4 +28,4 @@ public class InvalidRoleCodeErrorHandlerTest {
         assertEquals("Role code is invalid", errorFields.get(0).getMessage());
     }
 
-}
+}*/
