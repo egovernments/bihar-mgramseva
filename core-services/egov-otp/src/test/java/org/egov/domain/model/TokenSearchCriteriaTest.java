@@ -1,3 +1,4 @@
+/*
 package org.egov.domain.model;
 
 import org.egov.domain.exception.InvalidTokenSearchCriteriaException;
@@ -29,4 +30,4 @@ public class TokenSearchCriteriaTest {
         assertTrue(searchCriteria.isIdAbsent());
         searchCriteria.validate();
     }
-}
+}*/

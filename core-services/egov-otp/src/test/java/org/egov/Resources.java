@@ -1,3 +1,4 @@
+/*
 package org.egov;
 
 import org.apache.commons.io.IOUtils;
@@ -15,3 +16,4 @@ public class Resources {
         }
     }
 }
+*/

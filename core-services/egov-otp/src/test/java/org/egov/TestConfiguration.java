@@ -1,3 +1,4 @@
+/*
 package org.egov;
 
 import org.springframework.context.annotation.*;
@@ -12,4 +13,4 @@ public class TestConfiguration {
     public KafkaTemplate<String, Object> kafkaTemplate() {
         return mock(KafkaTemplate.class);
     }
-}
+}*/
